@@ -1,6 +1,17 @@
 # FyydEx
 
-**TODO: Add description**
+## TODOs
+
+- [ ] Authorization
+- [ ] Error Handling
+- [ ] Account
+- [ ] User
+- [ ] Action
+- [ ] Podcast
+- [ ] Episode
+- [ ] Curations
+- [ ] Collections
+- [ ] Search
 
 ## Installation
 
@@ -18,4 +29,3 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex).
-
