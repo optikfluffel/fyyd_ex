@@ -1,4 +1,6 @@
 defmodule FyydExTest do
+  @moduledoc false
+
   use ExUnit.Case
   doctest FyydEx
 
