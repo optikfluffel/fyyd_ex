@@ -12,7 +12,7 @@ defmodule Fyyd.API do
   @api_version "0.2"
   @base_url "https://api.fyyd.de"
 
-  @spec get_data(String.t) :: {:ok, map} | {:error, :not_found}
+  @spec get_data(String.t) :: {:ok, map} | {:ok, [map]} | {:error, :not_found}
   def get_data(url) do
     case get(url) do
       {:ok, %HTTPoison.Response{status_code: 200, body: %Response{data: data}}} ->

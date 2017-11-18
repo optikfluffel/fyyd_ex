@@ -89,10 +89,19 @@ be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex). -->
 ```elixir
 # by id
 {:ok, user} = Fyyd.user(2078)
-
-# or by id as String
 {:ok, user} = Fyyd.user("2078")
 
 # or by nick
 {:ok, user} = Fyyd.user_by_nick("optikfluffel")
+```
+
+### 📂 Curations
+
+```elixir
+# for a specific user by id
+{:ok, curations} = Fyyd.curations_for_user(2078)
+{:ok, curations} = Fyyd.curations_for_user("2078")
+
+# for a specific user by nick
+{:ok, curations} = Fyyd.curations_for_user_by_nick("optikfluffel")
 ```
