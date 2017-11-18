@@ -46,8 +46,9 @@ defmodule FyydEx.Mixfile do
       {:httpoison, "~> 0.13"},
       {:poison, "~> 3.1"},
       # dev tools
-      {:credo, "~> 0.8", only: :dev, runtime: false},
-      {:dialyxir, "~> 0.5.1", only: :dev, runtime: false},
+      {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
+      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 0.5.1", only: [:dev, :test], runtime: false},
       # test tools
       {:excoveralls, "~> 0.7", only: :test, runtime: false},
       {:stream_data, "~> 0.3", only: :test},
