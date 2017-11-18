@@ -19,7 +19,7 @@
   - [ ] GET /account/collections
 - [ ] User
   - [x] GET /user
-  - [ ] GET /user/curations
+  - [x] GET /user/curations
     - [ ] GET /user/curations/episodes
   - [ ] GET /user/collections
     - [ ] GET /user/collections/podcasts
