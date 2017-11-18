@@ -66,9 +66,16 @@ def deps do
 end
 ```
 
+_Also make sure you have these three environtment variables set correctly_:
+
+- `FYYD_CLIENT_ID`
+- `FYYD_CLIENT_SECRET`
+- `FYYD_OAUTH_CALLBACK_URL`
+
+<!-- TODO: uncomment when ready
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex).
+be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex). -->
 
 ## Usage
 
