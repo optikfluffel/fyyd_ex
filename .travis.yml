@@ -9,6 +9,6 @@ env:
 install:
   - mix local.rebar --force
   - mix local.hex --force
-  - mix deps.get --only test
+  - mix do deps.get --only test, deps.compile
 after_script:
   - mix coveralls.travis
