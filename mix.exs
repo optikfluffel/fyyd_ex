@@ -11,6 +11,9 @@ defmodule FyydEx.Mixfile do
       elixirc_paths: elixirc_paths(Mix.env),
       start_permanent: Mix.env == :prod,
       deps: deps(),
+      dialyzer: [
+        flags: ["-Wunmatched_returns", :error_handling, :race_conditions, :underspecs]
+      ],
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         coveralls: :test,
@@ -44,6 +47,8 @@ defmodule FyydEx.Mixfile do
       {:poison, "~> 3.1"},
       # dev tools
       {:credo, "~> 0.8", only: :dev, runtime: false},
+      {:dialyxir, "~> 0.5.1", only: :dev, runtime: false},
+      # test tools
       {:excoveralls, "~> 0.7", only: :test, runtime: false},
       {:stream_data, "~> 0.3", only: :test},
       {:exvcr, "~> 0.8", only: :test}
