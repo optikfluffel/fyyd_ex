@@ -8,41 +8,38 @@ defmodule Fyyd.UserTest do
   alias Fyyd.User
   alias Fyyd.Factory
 
-  @optikfluffel %User{
-    bio: "Just looking around.",
-    fullname: "optikfluffel",
-    id: 2078,
-    layoutImageURL: "https://img.fyyd.de/user/layout/2078.jpg?et=644a12a72e1f75f671ede648850a0b98",
-    microImageURL: "https://img.fyyd.de/user/micro/2078.png?et=644a12a72e1f75f671ede648850a0b98",
-    nick: "optikfluffel",
-    thumbImageURL: "https://img.fyyd.de/user/thumbs/2078.png?et=644a12a72e1f75f671ede648850a0b98",
-    url: "https://www.instagram.com/optikfluffel/"
-  }
-
   doctest User
 
   setup_all do
     HTTPoison.start()
   end
 
-  describe "get!/1" do
+  describe "get/1" do
     test "gets a User by it's id" do
       use_cassette "user_id" do
-        assert {:ok, @optikfluffel} = User.get(@optikfluffel.id)
+        known_user = Factory.optikfluffel()
+
+        assert {:ok, ^known_user} = User.get(known_user.id)
       end
     end
 
     test "gets a User by it's id, where id is a string" do
       use_cassette "user_id" do
-        assert {:ok, @optikfluffel} = @optikfluffel.id |> Integer.to_string() |> User.get()
+        known_user = Factory.optikfluffel()
+
+        assert {:ok, ^known_user} = known_user.id
+        |> Integer.to_string()
+        |> User.get()
       end
     end
   end
 
-  describe "get_by_nick!/1" do
+  describe "get_by_nick/1" do
     test "gets a User by it's id" do
       use_cassette "user_nick" do
-        assert {:ok, @optikfluffel} = User.get_by_nick(@optikfluffel.nick)
+        known_user = Factory.optikfluffel()
+
+        assert {:ok, ^known_user} = User.get_by_nick(known_user.nick)
       end
     end
   end

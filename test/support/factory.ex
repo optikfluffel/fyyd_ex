@@ -3,6 +3,8 @@ defmodule Fyyd.Factory do
 
   require ExUnitProperties
 
+  alias Fyyd.User
+
   @tlds ~w(.com .org .de .io .us .net)
   @base_image_url "https://img.fyyd.de/user"
 
@@ -28,5 +30,19 @@ defmodule Fyyd.Factory do
         "microImageURL"  => @base_image_url <> "/thumbs/" <> Integer.to_string(id) <> ".png?et=" <> et
       }
     end
+  end
+
+  # ---------------------------------------- Hardcoded Test Values
+  def optikfluffel do
+    %User{
+      bio: "Just looking around.",
+      fullname: "optikfluffel",
+      id: 2078,
+      layoutImageURL: "https://img.fyyd.de/user/layout/2078.jpg?et=644a12a72e1f75f671ede648850a0b98",
+      microImageURL: "https://img.fyyd.de/user/micro/2078.png?et=644a12a72e1f75f671ede648850a0b98",
+      nick: "optikfluffel",
+      thumbImageURL: "https://img.fyyd.de/user/thumbs/2078.png?et=644a12a72e1f75f671ede648850a0b98",
+      url: "https://www.instagram.com/optikfluffel/"
+    }
   end
 end

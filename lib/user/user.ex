@@ -4,6 +4,7 @@ defmodule Fyyd.User do
   """
 
   alias Fyyd.API
+  alias Fyyd.Utils
 
   @expected_fields ~w(id nick fullname bio url layoutImageURL thumbImageURL microImageURL)
 
@@ -34,14 +35,13 @@ defmodule Fyyd.User do
     end
   end
 
-  # ---------------------------------------- HTTPoison.Base specific
   @doc """
   Takes the @expected_fields out of a given map and builds a %User{} struct out of it.
   """
+  @spec extract_user_from_response(map) :: {:ok, %__MODULE__{}}
   def extract_user_from_response(data) do
     user = data
-    |> Map.take(@expected_fields)
-    |> Enum.map(fn({k, v}) -> {String.to_atom(k), v} end)
+    |> Utils.extract_from_response(@expected_fields)
     |> from_keyword_list()
 
     {:ok, user}

@@ -23,6 +23,7 @@ defmodule Fyyd.API do
     end
   end
 
+  # ---------------------------------------- HTTPoison.Base specific
   def process_url(url), do: @base_url <> "/" <> @api_version <> url
 
   def process_response_body(""), do: nil
