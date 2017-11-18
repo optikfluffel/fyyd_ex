@@ -1,5 +1,7 @@
 # FyydEx
 
+⚠️ WORK IN PROGRESS: A basic wrapper for the [Fyyd API](https://github.com/eazyliving/fyyd-api).
+
 ## TODOs
 
 - [ ] Authorization
@@ -83,11 +85,11 @@ be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex). -->
 
 ```elixir
 # by id
-user = Fyyd.user!(2078)
+{:ok, user} = Fyyd.user(2078)
 
 # or by id as String
-user = Fyyd.user!("2078")
+{:ok, user} = Fyyd.user("2078")
 
 # or by nick
-user = Fyyd.user_by_nick!("optikfluffel")
+{:ok, user} = Fyyd.user_by_nick("optikfluffel")
 ```

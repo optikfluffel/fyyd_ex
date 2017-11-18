@@ -1,7 +1,7 @@
 defmodule Fyyd.UserTest do
   @moduledoc false
 
-  use ExUnit.Case, async: true
+  use ExUnit.Case, async: false
   use ExUnitProperties
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
@@ -28,13 +28,13 @@ defmodule Fyyd.UserTest do
   describe "get!/1" do
     test "gets a User by it's id" do
       use_cassette "user_id" do
-        assert User.get!(2078) == @optikfluffel
+        assert {:ok, @optikfluffel} = User.get(@optikfluffel.id)
       end
     end
 
     test "gets a User by it's id, where id is a string" do
       use_cassette "user_id" do
-        assert User.get!("2078") == @optikfluffel
+        assert {:ok, @optikfluffel} = @optikfluffel.id |> Integer.to_string() |> User.get()
       end
     end
   end
@@ -42,7 +42,7 @@ defmodule Fyyd.UserTest do
   describe "get_by_nick!/1" do
     test "gets a User by it's id" do
       use_cassette "user_nick" do
-        assert User.get_by_nick!("optikfluffel") == @optikfluffel
+        assert {:ok, @optikfluffel} = User.get_by_nick(@optikfluffel.nick)
       end
     end
   end
@@ -52,14 +52,14 @@ defmodule Fyyd.UserTest do
       check all map <- Factory.user_map do
         user_id = map["id"]
 
-        assert %User{id: ^user_id} = User.extract_user_from_response(map)
+        assert {:ok, %User{id: ^user_id}} = User.extract_user_from_response(map)
       end
     end
 
     property "discards unexpected keys" do
       check all valid_map <- Factory.user_map do
         map = Map.put_new(valid_map, "something_strange", "This really shouldn't be here.")
-        user = User.extract_user_from_response(map)
+        {:ok, user} = User.extract_user_from_response(map)
 
         refute Map.has_key?(user, "something_strange")
         refute Map.has_key?(user, :something_strange)

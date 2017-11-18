@@ -1,0 +1,33 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.fyyd.de/0.2/nothing/to/be/found/here"
+    },
+    "response": {
+      "binary": false,
+      "body": "",
+      "headers": {
+        "Date": "Sat, 18 Nov 2017 11:06:56 GMT",
+        "Server": "Apache/2.4.10 (Debian)",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "X-Powered-By": "Fat-Free Framework",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "max-age=-1",
+        "Expires": "Sat, 18 Nov 2017 11:06:55 +0000",
+        "Last-Modified": "Sat, 18 Nov 2017 11:06:56 +0000",
+        "Vary": "User-Agent",
+        "Content-Length": "0",
+        "Content-Type": "text/html; charset=UTF-8"
+      },
+      "status_code": 404,
+      "type": "ok"
+    }
+  }
+]

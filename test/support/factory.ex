@@ -6,7 +6,6 @@ defmodule Fyyd.Factory do
   @tlds ~w(.com .org .de .io .us .net)
   @base_image_url "https://img.fyyd.de/user"
 
-  # id nick fullname bio url layoutImageURL thumbImageURL microImageURL
   def user_map do
     ExUnitProperties.gen all id <- StreamData.integer(),
                              nick <- StreamData.string(:alphanumeric),
