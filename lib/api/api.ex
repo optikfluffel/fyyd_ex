@@ -10,19 +10,6 @@ defmodule Fyyd.API do
   @api_version "0.2"
   @base_url "https://api.fyyd.de"
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Fyyd.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
-
   def get_data!(url) do
     url
     |> get!()

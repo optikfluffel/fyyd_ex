@@ -3,16 +3,8 @@ defmodule Fyyd do
   Documentation for Fyyd.
   """
 
-  @doc """
-  Hello world.
+  alias Fyyd.User
 
-  ## Examples
-
-      iex> Fyyd.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  defdelegate user!(id), to: User, as: :get!
+  defdelegate user_by_nick!(nick), to: User, as: :get_by_nick!
 end

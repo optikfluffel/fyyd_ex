@@ -83,11 +83,11 @@ be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex). -->
 
 ```elixir
 # by id
-user = Fyyd.User.get_user!(2078)
+user = Fyyd.user!(2078)
 
 # or by id as String
-user = Fyyd.User.get_user!("2078")
+user = Fyyd.user!("2078")
 
 # or by nick
-user = Fyyd.User.get_user_by_nick!("optikfluffel")
+user = Fyyd.user_by_nick!("optikfluffel")
 ```
