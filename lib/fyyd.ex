@@ -1,6 +1,6 @@
-defmodule FyydEx do
+defmodule Fyyd do
   @moduledoc """
-  Documentation for FyydEx.
+  Documentation for Fyyd.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule FyydEx do
 
   ## Examples
 
-      iex> FyydEx.hello
+      iex> Fyyd.hello
       :world
 
   """
