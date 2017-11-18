@@ -3,6 +3,7 @@ defmodule Fyyd.UserTest do
 
   use ExUnit.Case, async: true
   use ExUnitProperties
+  use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   alias Fyyd.User
   alias Fyyd.Factory
@@ -20,19 +21,29 @@ defmodule Fyyd.UserTest do
 
   doctest User
 
+  setup_all do
+    HTTPoison.start()
+  end
+
   describe "get!/1" do
     test "gets a User by it's id" do
-      assert User.get!(2078) == @optikfluffel
+      use_cassette "user_id" do
+        assert User.get!(2078) == @optikfluffel
+      end
     end
 
     test "gets a User by it's id, where id is a string" do
-      assert User.get!("2078") == @optikfluffel
+      use_cassette "user_id" do
+        assert User.get!("2078") == @optikfluffel
+      end
     end
   end
 
   describe "get_by_nick!/1" do
     test "gets a User by it's id" do
-      assert User.get_by_nick!("optikfluffel") == @optikfluffel
+      use_cassette "user_nick" do
+        assert User.get_by_nick!("optikfluffel") == @optikfluffel
+      end
     end
   end
 

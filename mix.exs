@@ -13,10 +13,15 @@ defmodule FyydEx.Mixfile do
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
-        "coveralls": :test,
+        coveralls: :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
-        "coveralls.html": :test
+        "coveralls.html": :test,
+
+        vcr: :test,
+        "vcr.delete": :test,
+        "vcr.check": :test,
+        "vcr.show": :test,
       ]
     ]
   end
@@ -40,7 +45,8 @@ defmodule FyydEx.Mixfile do
       # dev tools
       {:credo, "~> 0.8", only: :dev, runtime: false},
       {:excoveralls, "~> 0.7", only: :test, runtime: false},
-      {:stream_data, "~> 0.3", only: :test}
+      {:stream_data, "~> 0.3", only: :test},
+      {:exvcr, "~> 0.8", only: :test}
     ]
   end
 end
