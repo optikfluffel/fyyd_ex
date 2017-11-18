@@ -1,5 +1,7 @@
 # FyydEx
 
+[![Build Status](https://travis-ci.org/optikfluffel/fyyd_ex.svg?branch=master)](https://travis-ci.org/optikfluffel/fyyd_ex)
+
 ⚠️ WORK IN PROGRESS: A basic wrapper for the [Fyyd API](https://github.com/eazyliving/fyyd-api).
 
 ## TODOs
