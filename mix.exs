@@ -51,7 +51,7 @@ defmodule FyydEx.Mixfile do
       {:dialyxir, "~> 0.5.1", only: [:dev, :test], runtime: false},
       # test tools
       {:excoveralls, "~> 0.7", only: :test, runtime: false},
-      {:stream_data, "~> 0.3", only: :test},
+      {:stream_data, "~> 0.4", only: :test},
       {:exvcr, "~> 0.8", only: :test}
     ]
   end
