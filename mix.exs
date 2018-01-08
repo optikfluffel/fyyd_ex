@@ -43,14 +43,14 @@ defmodule FyydEx.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 0.13"},
+      {:httpoison, "~> 1.0", override: true},
       {:poison, "~> 3.1"},
       # dev tools
       {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5.1", only: [:dev, :test], runtime: false},
       # test tools
-      {:excoveralls, "~> 0.7", only: :test, runtime: false},
+      {:excoveralls, "~> 0.8", only: :test, runtime: false},
       {:stream_data, "~> 0.4", only: :test},
       {:exvcr, "~> 0.8", only: :test}
     ]
