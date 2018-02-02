@@ -1,49 +1,11 @@
 defmodule Fyyd.UserTest do
   @moduledoc false
 
-  use ExUnit.Case, async: false
+  use ExUnit.Case, async: true
   use ExUnitProperties
-  use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   alias Fyyd.User
   alias Fyyd.Factory
-
-  doctest User
-
-  setup_all do
-    HTTPoison.start()
-  end
-
-  describe "get/1" do
-    test "gets a User by it's id" do
-      use_cassette "user_id" do
-        known_user = Factory.optikfluffel()
-
-        assert {:ok, ^known_user} = User.get(known_user.id)
-      end
-    end
-
-    test "gets a User by it's id, where id is a string" do
-      use_cassette "user_id" do
-        known_user = Factory.optikfluffel()
-
-        assert {:ok, ^known_user} =
-                 known_user.id
-                 |> Integer.to_string()
-                 |> User.get()
-      end
-    end
-  end
-
-  describe "get_by_nick/1" do
-    test "gets a User by it's id" do
-      use_cassette "user_nick" do
-        known_user = Factory.optikfluffel()
-
-        assert {:ok, ^known_user} = User.get_by_nick(known_user.nick)
-      end
-    end
-  end
 
   describe "extract_user_from_response/1" do
     property "converts a valid map to a %User{}" do
