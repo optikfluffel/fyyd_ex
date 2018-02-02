@@ -5,6 +5,7 @@ defmodule Fyyd do
 
   alias Fyyd.User
   alias Fyyd.Curations
+  alias Fyyd.Collections
 
   # ---------------------------------------- 😊 User
   @spec user(integer | String.t()) :: {:ok, %User{}}
@@ -21,4 +22,11 @@ defmodule Fyyd do
   defdelegate curations_for_user_by_nick(nick, opts \\ []),
     to: Curations,
     as: :get_for_user_by_nick
+
+  # ---------------------------------------- 📚 Collections
+  @spec collections_for_user(integer | String.t()) :: {:ok, [%Collections.Collection{}]}
+  defdelegate collections_for_user(id), to: Collections, as: :get_for_user
+
+  @spec collections_for_user_by_nick(String.t()) :: {:ok, [%Collections.Collection{}]}
+  defdelegate collections_for_user_by_nick(nick), to: Collections, as: :get_for_user_by_nick
 end

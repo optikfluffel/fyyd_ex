@@ -57,6 +57,15 @@ be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex). -->
 {:ok, curations} = Fyyd.curations_for_user_by_nick("optikfluffel", include: :episodes)
 ```
 
+### 📚 Collections
+
+```elixir
+# for a specific User
+{:ok, collections} = Fyyd.collections_for_user(2078)
+{:ok, collections} = Fyyd.collections_for_user("2078")
+{:ok, collections} = Fyyd.collections_for_user_by_nick("optikfluffel")
+```
+
 ## Development
 
 - Install dependencies with `mix do deps.get, deps.compile`
