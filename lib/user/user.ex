@@ -10,6 +10,17 @@ defmodule Fyyd.User do
 
   defstruct ~w(id nick fullname bio url layoutImageURL thumbImageURL microImageURL)a
 
+  @type t :: %__MODULE__{
+          id: integer,
+          nick: String.t(),
+          fullname: String.t(),
+          bio: String.t(),
+          url: String.t(),
+          layoutImageURL: String.t(),
+          thumbImageURL: String.t(),
+          microImageURL: String.t()
+        }
+
   @doc """
   Gets public available information about a registered account by it's `id`.
   """

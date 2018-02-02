@@ -3,12 +3,28 @@ defmodule Fyyd.Curations.Curation do
 
   alias Fyyd.Utils
   alias Fyyd.Episodes
+  alias Fyyd.Episodes.Episode
 
   @expected_fields ~w(id title description public type slug url xmlURL
                       layoutImageURL thumbImageURL microImageURL episodes)
 
   defstruct ~w(id title description public type slug url xmlURL
                layoutImageURL thumbImageURL microImageURL episodes)a
+
+  @type t :: %__MODULE__{
+          id: integer,
+          title: String.t(),
+          description: String.t(),
+          public: integer,
+          type: integer,
+          slug: String.t(),
+          url: String.t(),
+          xmlURL: String.t(),
+          layoutImageURL: String.t(),
+          thumbImageURL: String.t(),
+          microImageURL: String.t(),
+          episodes: [Episode.t()]
+        }
 
   @doc """
   Takes the @expected_fields out of a given map and builds a %Curation{} struct out of it.
