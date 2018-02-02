@@ -57,7 +57,7 @@ defmodule Fyyd.Factory do
         "public" => public,
         "type" => type,
         "slug" => slug,
-        "url" => @user_base <> "/" <> nick <> "/curation/" <> slug,
+        "url" => @user_base <> "/" <> nick <> "/curations/" <> slug,
         "xmlURL" => @feeds_base <> "/" <> nick <> "/" <> slug,
         "layoutImageURL" =>
           @curation_image <> "/layout/" <> Integer.to_string(id) <> ".png?et=" <> et,

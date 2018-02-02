@@ -44,11 +44,8 @@ defmodule Fyyd.User do
     user =
       data
       |> Utils.extract_from_response(@expected_fields)
-      |> from_keyword_list()
+      |> Utils.struct_from_keyword_list(__MODULE__)
 
     {:ok, user}
   end
-
-  # build a %User{} struct from the given keyword list
-  defp from_keyword_list(list), do: struct(__MODULE__, list)
 end

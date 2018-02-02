@@ -9,4 +9,7 @@ defmodule Fyyd.Utils do
     |> Map.take(expected_fields)
     |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
   end
+
+  @spec struct_from_keyword_list(list, module) :: struct
+  def struct_from_keyword_list(list, module), do: struct(module, list)
 end
