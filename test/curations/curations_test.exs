@@ -8,18 +8,18 @@ defmodule Fyyd.CurationsTest do
   alias Fyyd.Curations.Curation
   alias Fyyd.Factory
 
-  describe "extract_curations_from_response/1" do
+  describe "extract_from_response/1" do
     test "converts a list of valid maps to a List of %Curations{}" do
       {:ok, curations} =
         Factory.curation_map()
         |> Enum.take(:rand.uniform(100))
-        |> Curations.extract_curations_from_response()
+        |> Curations.extract_from_response()
 
       assert %Curation{} = List.first(curations)
     end
 
     test "works with an empty list" do
-      assert {:ok, []} = Curations.extract_curations_from_response([])
+      assert {:ok, []} = Curations.extract_from_response([])
     end
   end
 end

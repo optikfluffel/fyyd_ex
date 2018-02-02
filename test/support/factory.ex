@@ -14,6 +14,7 @@ defmodule Fyyd.Factory do
 
   @feeds_base "https://feeds.fyyd.de"
   @user_base "https://fyyd.de/user"
+  @episode_base "https://fyyd.de/episode"
 
   def non_empty_string do
     :alphanumeric
@@ -65,6 +66,62 @@ defmodule Fyyd.Factory do
           @curation_image <> "/thumb/" <> Integer.to_string(id) <> ".png?et=" <> et,
         "microImageURL" =>
           @curation_image <> "/micro/" <> Integer.to_string(id) <> ".png?et=" <> et
+      }
+    end
+  end
+
+  def curation_map_with_episodes do
+    ExUnitProperties.gen all id <- StreamData.integer(),
+                             title <- non_empty_string(),
+                             description <- non_empty_string(),
+                             public <- StreamData.integer(0..1),
+                             type <- StreamData.integer(),
+                             slug <- non_empty_string(),
+                             episodes <- StreamData.uniq_list_of(episode_map(), max_length: 5),
+                             nick <- non_empty_string(),
+                             et <- non_empty_string() do
+      %{
+        "id" => id,
+        "title" => title,
+        "description" => description,
+        "public" => public,
+        "type" => type,
+        "slug" => slug,
+        "episodes" => episodes,
+        "url" => @user_base <> "/" <> nick <> "/curations/" <> slug,
+        "xmlURL" => @feeds_base <> "/" <> nick <> "/" <> slug,
+        "layoutImageURL" =>
+          @curation_image <> "/layout/" <> Integer.to_string(id) <> ".png?et=" <> et,
+        "thumbImageURL" =>
+          @curation_image <> "/thumb/" <> Integer.to_string(id) <> ".png?et=" <> et,
+        "microImageURL" =>
+          @curation_image <> "/micro/" <> Integer.to_string(id) <> ".png?et=" <> et
+      }
+    end
+  end
+
+  def episode_map do
+    ExUnitProperties.gen all id <- StreamData.integer(),
+                             guid <- non_empty_string(),
+                             title <- non_empty_string(),
+                             url <- non_empty_string(),
+                             enclosure <- non_empty_string(),
+                             podcast_id <- StreamData.integer(),
+                             duration <- StreamData.integer(),
+                             description <- non_empty_string(),
+                             tld <- StreamData.member_of(@tlds) do
+      %{
+        "id" => id,
+        "guid" => guid,
+        "title" => title,
+        "url" => "https://" <> url <> tld,
+        "enclosure" => "https://" <> enclosure <> tld <> "/file.mp3",
+        "podcast_id" => podcast_id,
+        "imgURL" => "https://" <> enclosure <> tld <> "/image.jpg",
+        "pubdate" => Timex.now() |> Timex.format!("{ISO:Extended}"),
+        "duration" => duration,
+        "url_fyyd" => @episode_base <> "/" <> Integer.to_string(id),
+        "description" => description
       }
     end
   end

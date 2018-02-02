@@ -6,6 +6,7 @@ defmodule FyydTest do
 
   alias Fyyd.Factory
   alias Fyyd.Curations.Curation
+  alias Fyyd.Episodes.Episode
 
   setup_all do
     HTTPoison.start()
@@ -63,6 +64,15 @@ defmodule FyydTest do
         assert Enum.member?(curations, Factory.public_test_curation())
       end
     end
+
+    test "gets Curations for a given User  by it's id, including Episodes" do
+      use_cassette "curations_user_id_include_episodes" do
+        {:ok, curations} = Fyyd.curations_for_user(Factory.optikfluffel().id, include: :episodes)
+
+        assert %Curation{} = curation = List.first(curations)
+        assert %Episode{} = List.first(curation.episodes)
+      end
+    end
   end
 
   describe "curations_for_user_by_nick/1" do
@@ -72,6 +82,16 @@ defmodule FyydTest do
 
         assert %Curation{} = List.first(curations)
         assert Enum.member?(curations, Factory.public_test_curation())
+      end
+    end
+
+    test "gets Curations for a given User by it's nick, including Episodes" do
+      use_cassette "curations_user_nick_include_episodes" do
+        assert {:ok, curations} =
+                 Fyyd.curations_for_user_by_nick(Factory.optikfluffel().nick, include: :episodes)
+
+        assert %Curation{} = curation = List.first(curations)
+        assert %Episode{} = List.first(curation.episodes)
       end
     end
   end
