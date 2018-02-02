@@ -29,14 +29,14 @@ defmodule Fyyd.Factory do
                              et <- non_empty_string(),
                              tld <- StreamData.member_of(@tlds) do
       %{
-        "id"             => id,
-        "nick"           => nick,
-        "fullname"       => "Fullname " <> nick,
-        "bio"            => bio,
-        "url"            => "https://" <> url <> tld,
+        "id" => id,
+        "nick" => nick,
+        "fullname" => "Fullname " <> nick,
+        "bio" => bio,
+        "url" => "https://" <> url <> tld,
         "layoutImageURL" => @user_image <> "/layout/" <> Integer.to_string(id) <> ".png?et=" <> et,
-        "thumbImageURL"  => @user_image <> "/micro/" <> Integer.to_string(id) <> ".png?et=" <> et,
-        "microImageURL"  => @user_image <> "/thumbs/" <> Integer.to_string(id) <> ".png?et=" <> et
+        "thumbImageURL" => @user_image <> "/micro/" <> Integer.to_string(id) <> ".png?et=" <> et,
+        "microImageURL" => @user_image <> "/thumbs/" <> Integer.to_string(id) <> ".png?et=" <> et
       }
     end
   end
@@ -59,9 +59,12 @@ defmodule Fyyd.Factory do
         "slug" => slug,
         "url" => @user_base <> "/" <> nick <> "/curation/" <> slug,
         "xmlURL" => @feeds_base <> "/" <> nick <> "/" <> slug,
-        "layoutImageURL" => @curation_image <> "/layout/" <> Integer.to_string(id) <> ".png?et=" <> et,
-        "thumbImageURL" => @curation_image <> "/thumb/" <> Integer.to_string(id) <> ".png?et=" <> et,
-        "microImageURL" => @curation_image <> "/micro/" <> Integer.to_string(id) <> ".png?et=" <> et
+        "layoutImageURL" =>
+          @curation_image <> "/layout/" <> Integer.to_string(id) <> ".png?et=" <> et,
+        "thumbImageURL" =>
+          @curation_image <> "/thumb/" <> Integer.to_string(id) <> ".png?et=" <> et,
+        "microImageURL" =>
+          @curation_image <> "/micro/" <> Integer.to_string(id) <> ".png?et=" <> et
       }
     end
   end
@@ -72,10 +75,12 @@ defmodule Fyyd.Factory do
       bio: "Just looking around.",
       fullname: "optikfluffel",
       id: 2078,
-      layoutImageURL: "https://img.fyyd.de/user/layout/2078.jpg?et=644a12a72e1f75f671ede648850a0b98",
+      layoutImageURL:
+        "https://img.fyyd.de/user/layout/2078.jpg?et=644a12a72e1f75f671ede648850a0b98",
       microImageURL: "https://img.fyyd.de/user/micro/2078.png?et=644a12a72e1f75f671ede648850a0b98",
       nick: "optikfluffel",
-      thumbImageURL: "https://img.fyyd.de/user/thumbs/2078.png?et=644a12a72e1f75f671ede648850a0b98",
+      thumbImageURL:
+        "https://img.fyyd.de/user/thumbs/2078.png?et=644a12a72e1f75f671ede648850a0b98",
       url: "https://www.instagram.com/optikfluffel/"
     }
   end
@@ -84,11 +89,16 @@ defmodule Fyyd.Factory do
     %Curation{
       description: "public test feed for optikfluffel",
       id: 2087,
-      layoutImageURL: "https://img.fyyd.de/curation/layout/2087.jpg?et=9408c6befe81e94f3b6899c0b9b12041",
-      microImageURL: "https://img.fyyd.de/curation/micro/2087.png?et=9408c6befe81e94f3b6899c0b9b12041",
-      public: 1, slug: "6d9d617d6febc168b11fc630f5435d1b",
-      thumbImageURL: "https://img.fyyd.de/curation/thumbs/2087.png?et=9408c6befe81e94f3b6899c0b9b12041",
-      title: "test curation for optikfluffel", type: 1,
+      layoutImageURL:
+        "https://img.fyyd.de/curation/layout/2087.jpg?et=9408c6befe81e94f3b6899c0b9b12041",
+      microImageURL:
+        "https://img.fyyd.de/curation/micro/2087.png?et=9408c6befe81e94f3b6899c0b9b12041",
+      public: 1,
+      slug: "6d9d617d6febc168b11fc630f5435d1b",
+      thumbImageURL:
+        "https://img.fyyd.de/curation/thumbs/2087.png?et=9408c6befe81e94f3b6899c0b9b12041",
+      title: "test curation for optikfluffel",
+      type: 1,
       url: "https://fyyd.de/user/optikfluffel/curation/6d9d617d6febc168b11fc630f5435d1b",
       xmlURL: "https://feeds.fyyd.de/optikfluffel/6d9d617d6febc168b11fc630f5435d1b"
     }

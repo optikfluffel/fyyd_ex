@@ -27,9 +27,10 @@ defmodule Fyyd.UserTest do
       use_cassette "user_id" do
         known_user = Factory.optikfluffel()
 
-        assert {:ok, ^known_user} = known_user.id
-        |> Integer.to_string()
-        |> User.get()
+        assert {:ok, ^known_user} =
+                 known_user.id
+                 |> Integer.to_string()
+                 |> User.get()
       end
     end
   end
@@ -55,9 +56,10 @@ defmodule Fyyd.UserTest do
 
     property "discards unexpected keys" do
       check all map <- Factory.user_map() do
-        {:ok, user} = map
-        |> Map.put_new("something_strange", "This really shouldn't be here.")
-        |> User.extract_user_from_response()
+        {:ok, user} =
+          map
+          |> Map.put_new("something_strange", "This really shouldn't be here.")
+          |> User.extract_user_from_response()
 
         refute Map.has_key?(user, "something_strange")
         refute Map.has_key?(user, :something_strange)

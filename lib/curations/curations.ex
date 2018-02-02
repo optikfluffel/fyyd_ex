@@ -11,12 +11,13 @@ defmodule Fyyd.Curations do
   @doc """
   Gets Curations for a given User by it's `id`.
   """
-  @spec get_for_user(integer | String.t) :: {:ok, list_of_curations}
+  @spec get_for_user(integer | String.t()) :: {:ok, list_of_curations}
   def get_for_user(id) when is_integer(id) do
     id
     |> Integer.to_string()
     |> get_for_user()
   end
+
   def get_for_user(id) when is_binary(id) do
     with {:ok, curations_data} <- API.get_data("/user/curations?user_id=" <> id) do
       extract_curations_from_response(curations_data)
@@ -26,7 +27,7 @@ defmodule Fyyd.Curations do
   @doc """
   Gets Curations for a given User by it's `nick`.
   """
-  @spec get_for_user_by_nick(String.t) :: {:ok, list_of_curations}
+  @spec get_for_user_by_nick(String.t()) :: {:ok, list_of_curations}
   def get_for_user_by_nick(nick) do
     with {:ok, curations_data} <- API.get_data("/user/curations?nick=" <> nick) do
       extract_curations_from_response(curations_data)

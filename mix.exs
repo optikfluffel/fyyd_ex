@@ -8,8 +8,8 @@ defmodule FyydEx.Mixfile do
       app: :fyyd_ex,
       version: "0.1.0",
       elixir: "~> 1.5",
-      elixirc_paths: elixirc_paths(Mix.env),
-      start_permanent: Mix.env == :prod,
+      elixirc_paths: elixirc_paths(Mix.env()),
+      start_permanent: Mix.env() == :prod,
       deps: deps(),
       dialyzer: [
         flags: ["-Wunmatched_returns", :error_handling, :race_conditions, :underspecs]
@@ -20,11 +20,10 @@ defmodule FyydEx.Mixfile do
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test,
-
         vcr: :test,
         "vcr.delete": :test,
         "vcr.check": :test,
-        "vcr.show": :test,
+        "vcr.show": :test
       ]
     ]
   end

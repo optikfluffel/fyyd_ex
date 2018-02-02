@@ -22,9 +22,10 @@ defmodule Fyyd.Curations.Curation do
   @doc false
   @spec extract_curation_from_response(map) :: {:ok, %__MODULE__{}}
   def extract_curation_from_response(data) do
-    curations = data
-    |> Utils.extract_from_response(@expected_fields)
-    |> from_keyword_list()
+    curations =
+      data
+      |> Utils.extract_from_response(@expected_fields)
+      |> from_keyword_list()
 
     {:ok, curations}
   end

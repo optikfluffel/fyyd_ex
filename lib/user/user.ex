@@ -13,12 +13,13 @@ defmodule Fyyd.User do
   @doc """
   Gets public available information about a registered account by it's `id`.
   """
-  @spec get(integer | String.t) :: {:ok, %__MODULE__{}}
+  @spec get(integer | String.t()) :: {:ok, %__MODULE__{}}
   def get(id) when is_integer(id) do
     id
     |> Integer.to_string()
     |> get()
   end
+
   def get(id) when is_binary(id) do
     with {:ok, user_data} <- API.get_data("/user?user_id=" <> id) do
       extract_user_from_response(user_data)
@@ -28,7 +29,7 @@ defmodule Fyyd.User do
   @doc """
   Gets public available information about a registered account by it's `nick`.
   """
-  @spec get_by_nick(String.t) :: {:ok, %__MODULE__{}}
+  @spec get_by_nick(String.t()) :: {:ok, %__MODULE__{}}
   def get_by_nick(nick) do
     with {:ok, user_data} <- API.get_data("/user?nick=" <> nick) do
       extract_user_from_response(user_data)
@@ -40,9 +41,10 @@ defmodule Fyyd.User do
   """
   @spec extract_user_from_response(map) :: {:ok, %__MODULE__{}}
   def extract_user_from_response(data) do
-    user = data
-    |> Utils.extract_from_response(@expected_fields)
-    |> from_keyword_list()
+    user =
+      data
+      |> Utils.extract_from_response(@expected_fields)
+      |> from_keyword_list()
 
     {:ok, user}
   end

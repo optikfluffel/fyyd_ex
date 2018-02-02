@@ -16,9 +16,10 @@ defmodule Fyyd.Curations.CurationTest do
 
     property "discards unexpected keys" do
       check all map <- Factory.curation_map() do
-        {:ok, curation} = map
-        |> Map.put_new("something_strange", "This really shouldn't be here.")
-        |> Curation.extract_curation_from_response()
+        {:ok, curation} =
+          map
+          |> Map.put_new("something_strange", "This really shouldn't be here.")
+          |> Curation.extract_curation_from_response()
 
         refute Map.has_key?(curation, "something_strange")
         refute Map.has_key?(curation, :something_strange)

@@ -27,9 +27,10 @@ defmodule Fyyd.CurationsTest do
 
     test "gets Curations for a given User by it's id, where id is a string" do
       use_cassette "curations_user_id" do
-        {:ok, curations} = Factory.optikfluffel().id
-        |> Integer.to_string()
-        |> Curations.get_for_user()
+        {:ok, curations} =
+          Factory.optikfluffel().id
+          |> Integer.to_string()
+          |> Curations.get_for_user()
 
         assert %Curation{} = List.first(curations)
         assert Enum.member?(curations, Factory.public_test_curation())
@@ -50,9 +51,10 @@ defmodule Fyyd.CurationsTest do
 
   describe "extract_curations_from_response/1" do
     test "converts a list of valid maps to a List of %Curations{}" do
-      {:ok, curations} = Factory.curation_map()
-      |> Enum.take(:rand.uniform(100))
-      |> Curations.extract_curations_from_response()
+      {:ok, curations} =
+        Factory.curation_map()
+        |> Enum.take(:rand.uniform(100))
+        |> Curations.extract_curations_from_response()
 
       assert %Curation{} = List.first(curations)
     end
