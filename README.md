@@ -53,3 +53,11 @@ be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex). -->
 # for a specific user by nick
 {:ok, curations} = Fyyd.curations_for_user_by_nick("optikfluffel")
 ```
+
+## Development
+
+- Install dependencies with `mix do deps.get, deps.compile`
+- Run tests with `mix test`
+- Run coverage reporting with `mix coveralls`
+- Check Typespecs with `mix dialyzer`
+- To continuously run tests, coverage and type checking while developing run `mix test.watch`
