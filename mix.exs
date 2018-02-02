@@ -48,11 +48,11 @@ defmodule FyydEx.Mixfile do
       # dev tools
       {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 0.5.1", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # test tools
       {:excoveralls, "~> 0.8", only: :test, runtime: false},
       {:stream_data, "~> 0.4", only: :test},
-      {:exvcr, "~> 0.8", only: :test}
+      {:exvcr, "~> 0.10", only: :test}
     ]
   end
 end
