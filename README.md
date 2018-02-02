@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/optikfluffel/fyyd_ex.svg?branch=master)](https://travis-ci.org/optikfluffel/fyyd_ex)
 [![Coverage Status](https://coveralls.io/repos/github/optikfluffel/fyyd_ex/badge.svg?branch=master)](https://coveralls.io/github/optikfluffel/fyyd_ex?branch=master)
+[![Hex.pm](https://img.shields.io/hexpm/v/fyyd_ex.svg)](https://hex.pm/packages/fyyd_ex)
 
 ⚠️ WORK IN PROGRESS: A basic wrapper for the [Fyyd API](https://github.com/eazyliving/fyyd-api).
 
