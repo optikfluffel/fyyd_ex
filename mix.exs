@@ -24,7 +24,10 @@ defmodule FyydEx.Mixfile do
         "vcr.delete": :test,
         "vcr.check": :test,
         "vcr.show": :test
-      ]
+      ],
+      source_url: "https://github.com/optikfluffel/fyyd_ex",
+      description: "A basic wrapper for the Fyyd API.",
+      package: package()
     ]
   end
 
@@ -52,6 +55,14 @@ defmodule FyydEx.Mixfile do
       {:excoveralls, "~> 0.8", only: :test, runtime: false},
       {:stream_data, "~> 0.4", only: :test},
       {:exvcr, "~> 0.10", only: :test}
+    ]
+  end
+
+  defp package() do
+    [
+      maintainers: ["optikfluffel"],
+      licenses: ["Unlicense"],
+      links: %{"GitHub" => "https://github.com/optikfluffel/fyyd_ex"}
     ]
   end
 end
