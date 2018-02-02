@@ -49,6 +49,7 @@ defmodule FyydEx.Mixfile do
       {:poison, "~> 3.1"},
       # dev tools
       {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.18", only: :dev, runtime: false},
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # test tools
