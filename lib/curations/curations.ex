@@ -6,40 +6,63 @@ defmodule Fyyd.Curations do
   alias Fyyd.API
   alias Fyyd.Curations.Curation
 
-  @type list_of_curations :: [%Curation{}]
-
   @doc """
   Gets Curations for a given User by it's `id`.
   """
-  @spec get_for_user(integer | String.t()) :: {:ok, list_of_curations}
-  def get_for_user(id) when is_integer(id) do
+  @spec get_for_user(integer | String.t(), key: atom) :: {:ok, [%Curation{}]}
+  def get_for_user(id, opts) when is_integer(id) do
     id
     |> Integer.to_string()
-    |> get_for_user()
+    |> get_for_user(opts)
   end
 
-  def get_for_user(id) when is_binary(id) do
+  def get_for_user(id, []) when is_binary(id) do
     with {:ok, curations_data} <- API.get_data("/user/curations?user_id=" <> id) do
-      extract_curations_from_response(curations_data)
+      extract_from_response(curations_data)
+    end
+  end
+
+  def get_for_user(id, include: :episodes) when is_binary(id) do
+    with {:ok, curations_data} <- API.get_data("/user/curations/episodes?user_id=" <> id) do
+      extract_from_response_with_episodes(curations_data)
     end
   end
 
   @doc """
   Gets Curations for a given User by it's `nick`.
   """
-  @spec get_for_user_by_nick(String.t()) :: {:ok, list_of_curations}
-  def get_for_user_by_nick(nick) do
+  @spec get_for_user_by_nick(String.t(), key: atom) :: {:ok, [Curation.t()]}
+  def get_for_user_by_nick(nick, []) do
     with {:ok, curations_data} <- API.get_data("/user/curations?nick=" <> nick) do
-      extract_curations_from_response(curations_data)
+      extract_from_response(curations_data)
+    end
+  end
+
+  def get_for_user_by_nick(nick, include: :episodes) do
+    with {:ok, curations_data} <- API.get_data("/user/curations/episodes?nick=" <> nick) do
+      extract_from_response_with_episodes(curations_data)
     end
   end
 
   @doc """
   Takes a list of map and builds a list of %Curation{} structs out of it.
   """
-  @spec extract_curations_from_response([map]) :: {:ok, list_of_curations}
-  def extract_curations_from_response(list_of_maps) when is_list(list_of_maps) do
-    curations = Enum.map(list_of_maps, &Curation.extract_curation_from_response!(&1))
+  @spec extract_from_response([map]) :: {:ok, [Curation.t()]}
+  def extract_from_response(list_of_maps) when is_list(list_of_maps) do
+    curations =
+      list_of_maps
+      |> Enum.map(&Curation.extract_from_response/1)
+      |> Enum.map(fn {:ok, curation} -> curation end)
+
+    {:ok, curations}
+  end
+
+  @spec extract_from_response_with_episodes([map]) :: {:ok, [Curation.t()]}
+  def extract_from_response_with_episodes(list_of_maps) when is_list(list_of_maps) do
+    curations =
+      list_of_maps
+      |> Enum.map(&Curation.extract_from_response_with_episodes/1)
+      |> Enum.map(fn {:ok, curation} -> curation end)
 
     {:ok, curations}
   end

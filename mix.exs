@@ -47,6 +47,7 @@ defmodule FyydEx.Mixfile do
     [
       {:httpoison, "~> 0.13"},
       {:poison, "~> 3.1"},
+      {:timex, "~> 3.1"},
       # dev tools
       {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
       {:ex_doc, "~> 0.18", only: :dev, runtime: false},

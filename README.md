@@ -46,12 +46,29 @@ be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex). -->
 ### 📂 Curations
 
 ```elixir
-# for a specific user by id
+# for a specific User
 {:ok, curations} = Fyyd.curations_for_user(2078)
 {:ok, curations} = Fyyd.curations_for_user("2078")
-
-# for a specific user by nick
 {:ok, curations} = Fyyd.curations_for_user_by_nick("optikfluffel")
+
+# including Episodes
+{:ok, curations} = Fyyd.curations_for_user(2078, include: :episodes)
+{:ok, curations} = Fyyd.curations_for_user("2078", include: :episodes)
+{:ok, curations} = Fyyd.curations_for_user_by_nick("optikfluffel", include: :episodes)
+```
+
+### 📚 Collections
+
+```elixir
+# for a specific User
+{:ok, collections} = Fyyd.collections_for_user(2078)
+{:ok, collections} = Fyyd.collections_for_user("2078")
+{:ok, collections} = Fyyd.collections_for_user_by_nick("optikfluffel")
+
+# including Podcasts
+{:ok, collections} = Fyyd.collections_for_user(2078, include: :podcasts)
+{:ok, collections} = Fyyd.collections_for_user("2078", include: :podcasts)
+{:ok, collections} = Fyyd.collections_for_user_by_nick("optikfluffel", include: :podcasts)
 ```
 
 ## Development
