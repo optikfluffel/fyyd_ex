@@ -24,7 +24,7 @@ defmodule Fyyd.Episodes.Episode do
         }
 
   @doc false
-  @spec extract_from_response(map) :: {:ok, %__MODULE__{}}
+  @spec extract_from_response(map) :: {:ok, t}
   def extract_from_response(data) do
     episode =
       data

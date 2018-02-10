@@ -26,9 +26,11 @@ defmodule Fyyd do
     as: :get_for_user_by_nick
 
   # ---------------------------------------- 📚 Collections
-  @spec collections_for_user(integer | String.t()) :: {:ok, [Collection.t()]}
-  defdelegate collections_for_user(id), to: Collections, as: :get_for_user
+  @spec collections_for_user(integer | String.t(), key: atom) :: {:ok, [Collection.t()]}
+  defdelegate collections_for_user(id, opts \\ []), to: Collections, as: :get_for_user
 
-  @spec collections_for_user_by_nick(String.t()) :: {:ok, [Collection.t()]}
-  defdelegate collections_for_user_by_nick(nick), to: Collections, as: :get_for_user_by_nick
+  @spec collections_for_user_by_nick(String.t(), key: atom) :: {:ok, [Collection.t()]}
+  defdelegate collections_for_user_by_nick(nick, opts \\ []),
+    to: Collections,
+    as: :get_for_user_by_nick
 end

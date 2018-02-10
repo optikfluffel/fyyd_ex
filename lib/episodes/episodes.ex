@@ -5,9 +5,7 @@ defmodule Fyyd.Episodes do
 
   alias Fyyd.Episodes.Episode
 
-  @type list_of_episodes :: [%Episode{}]
-
-  @spec extract_from_response([map]) :: {:ok, list_of_episodes}
+  @spec extract_from_response([map]) :: {:ok, [Episode.t()]}
   def extract_from_response(list_of_maps) do
     episodes =
       list_of_maps

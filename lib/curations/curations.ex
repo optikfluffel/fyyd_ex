@@ -31,7 +31,7 @@ defmodule Fyyd.Curations do
   @doc """
   Gets Curations for a given User by it's `nick`.
   """
-  @spec get_for_user_by_nick(String.t(), key: atom) :: {:ok, [%Curation{}]}
+  @spec get_for_user_by_nick(String.t(), key: atom) :: {:ok, [Curation.t()]}
   def get_for_user_by_nick(nick, []) do
     with {:ok, curations_data} <- API.get_data("/user/curations?nick=" <> nick) do
       extract_from_response(curations_data)
@@ -47,7 +47,7 @@ defmodule Fyyd.Curations do
   @doc """
   Takes a list of map and builds a list of %Curation{} structs out of it.
   """
-  @spec extract_from_response([map]) :: {:ok, [%Curation{}]}
+  @spec extract_from_response([map]) :: {:ok, [Curation.t()]}
   def extract_from_response(list_of_maps) when is_list(list_of_maps) do
     curations =
       list_of_maps
@@ -57,7 +57,7 @@ defmodule Fyyd.Curations do
     {:ok, curations}
   end
 
-  @spec extract_from_response_with_episodes([map]) :: {:ok, [%Curation{}]}
+  @spec extract_from_response_with_episodes([map]) :: {:ok, [Curation.t()]}
   def extract_from_response_with_episodes(list_of_maps) when is_list(list_of_maps) do
     curations =
       list_of_maps

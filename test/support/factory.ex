@@ -154,6 +154,58 @@ defmodule Fyyd.Factory do
     end
   end
 
+  def podcast_map do
+    ExUnitProperties.gen all id <- StreamData.integer(),
+                             description <- non_empty_string(),
+                             episode_count <- StreamData.integer(),
+                             etag <- non_empty_string(),
+                             generator <- non_empty_string(),
+                             htmlURL <- non_empty_string(),
+                             imgURL <- non_empty_string(),
+                             language <- non_empty_string(),
+                             lastmodified <- non_empty_string(),
+                             lastpoll <- non_empty_string(),
+                             lastpub <- non_empty_string(),
+                             layoutImageURL <- non_empty_string(),
+                             md5body <- non_empty_string(),
+                             microImageURL <- non_empty_string(),
+                             rank <- StreamData.integer(),
+                             slug <- non_empty_string(),
+                             smallImageURL <- non_empty_string(),
+                             status <- StreamData.integer(),
+                             subtitle <- non_empty_string(),
+                             thumbImageURL <- non_empty_string(),
+                             title <- non_empty_string(),
+                             url_fyyd <- non_empty_string(),
+                             xmlUrl <- non_empty_string() do
+      %{
+        "id" => id,
+        "description" => description,
+        "episode_count" => episode_count,
+        "etag" => etag,
+        "generator" => generator,
+        "htmlURL" => htmlURL,
+        "imgURL" => imgURL,
+        "language" => language,
+        "lastmodified" => lastmodified,
+        "lastpoll" => lastpoll,
+        "lastpub" => lastpub,
+        "layoutImageURL" => layoutImageURL,
+        "md5body" => md5body,
+        "microImageURL" => microImageURL,
+        "rank" => rank,
+        "slug" => slug,
+        "smallImageURL" => smallImageURL,
+        "status" => status,
+        "subtitle" => subtitle,
+        "thumbImageURL" => thumbImageURL,
+        "title" => title,
+        "url_fyyd" => url_fyyd,
+        "xmlUrl" => xmlUrl
+      }
+    end
+  end
+
   # ---------------------------------------- Hardcoded Test Values
   def optikfluffel do
     %User{
