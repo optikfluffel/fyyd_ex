@@ -82,6 +82,10 @@ defmodule Fyyd.API do
     {:ok, data}
   end
 
+  defp handle_response(%HTTPoison.Response{status_code: 401}) do
+    {:error, :unauthorized}
+  end
+
   defp handle_response(%HTTPoison.Response{status_code: 404}) do
     {:error, :not_found}
   end

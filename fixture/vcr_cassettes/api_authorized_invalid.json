@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.fyyd.de/0.2/account/info"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\n    \"errors\": {\n        \"code\": 0,\n        \"message\": \"invalid or unknown token\",\n        \"http_code\": 401,\n        \"http_message\": \"HTTP 401 (GET \\/0.2\\/account\\/info)\"\n    },\n    \"meta\": {\n        \"API_INFO\": {\n            \"API_VERSION\": 0.2\n        }\n    }\n}\n",
+      "headers": {
+        "Date": "Mon, 12 Feb 2018 13:15:15 GMT",
+        "Server": "Apache/2.4.10 (Debian)",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "X-Powered-By": "Fat-Free Framework",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "max-age=-1",
+        "Expires": "Mon, 12 Feb 2018 13:15:14 +0000",
+        "Last-Modified": "Mon, 12 Feb 2018 13:15:15 +0000",
+        "Vary": "User-Agent",
+        "Content-Length": "264",
+        "Content-Type": "application/json; charset=UTF-8"
+      },
+      "status_code": 401,
+      "type": "ok"
+    }
+  }
+]

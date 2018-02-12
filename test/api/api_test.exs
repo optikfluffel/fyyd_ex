@@ -30,4 +30,15 @@ defmodule Fyyd.APITest do
       end
     end
   end
+
+  describe "get_authorized_data/2" do
+    test "returns error when given an invalid access_token" do
+      ExVCR.Config.filter_request_headers("Authorization")
+
+      use_cassette "api_authorized_invalid" do
+        assert {:error, :unauthorized} =
+                 API.get_authorized_data("/account/info", "NOT AN ACCESS-TOKEN")
+      end
+    end
+  end
 end
