@@ -91,6 +91,10 @@ _See [github.com/eazyliving/fyyd-api#authorization](https://github.com/eazylivin
 
 # or by slug
 {:ok, podcast} = Fyyd.podcast("der-lila-podcast")
+
+# including Episodes
+{:ok, podcast} = Fyyd.podcast(344, include: :episodes)
+{:ok, podcast} = Fyyd.podcast("der-lila-podcast", include: :episodes)
 ```
 
 ## Development

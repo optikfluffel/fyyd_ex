@@ -195,7 +195,7 @@ defmodule FyydTest do
     end
   end
 
-  describe "podcast/1" do
+  describe "podcast/2" do
     test "gets a Podcast by it's id" do
       use_cassette "podcast_id" do
         assert {:ok, %Podcast{}} = Fyyd.podcast(344)
@@ -205,6 +205,22 @@ defmodule FyydTest do
     test "gets a Podcast by it's slug" do
       use_cassette "podcast_slug" do
         assert {:ok, %Podcast{}} = Fyyd.podcast("der-lila-podcast")
+      end
+    end
+
+    test "gets a Podcast by it's id, including Episodes" do
+      use_cassette "podcast_id_include_episodes" do
+        {:ok, podcast} = Fyyd.podcast(344, include: :episodes)
+
+        assert %Episode{} = List.first(podcast.episodes)
+      end
+    end
+
+    test "gets a Podcast by it's slug, including Episodes" do
+      use_cassette "podcast_slug_include_episodes" do
+        {:ok, podcast} = Fyyd.podcast("der-lila-podcast", include: :episodes)
+
+        assert %Episode{} = List.first(podcast.episodes)
       end
     end
   end

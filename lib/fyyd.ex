@@ -48,6 +48,6 @@ defmodule Fyyd do
   defdelegate account_collections(access_token), to: Account, as: :collections
 
   # ---------------------------------------- 🎧 Podcasts
-  @spec podcast(integer | String.t()) :: {:ok, Podcast.t()}
-  defdelegate podcast(id_or_slug), to: Podcasts, as: :get
+  @spec podcast(integer | String.t(), key: atom) :: {:ok, Podcast.t()}
+  defdelegate podcast(id_or_slug, opts \\ []), to: Podcasts, as: :get
 end
