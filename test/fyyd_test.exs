@@ -48,7 +48,7 @@ defmodule FyydTest do
     end
   end
 
-  describe "curations_for_user/1" do
+  describe "curations_for_user/2" do
     test "gets Curations for a given User by it's id" do
       use_cassette "curations_user_id" do
         {:ok, curations} = Fyyd.curations_for_user(Factory.optikfluffel().id)
@@ -80,7 +80,7 @@ defmodule FyydTest do
     end
   end
 
-  describe "curations_for_user_by_nick/1" do
+  describe "curations_for_user_by_nick/2" do
     test "gets Curations for a given User by it's nick" do
       use_cassette "curations_user_nick" do
         assert {:ok, curations} = Fyyd.curations_for_user_by_nick(Factory.optikfluffel().nick)
@@ -101,7 +101,7 @@ defmodule FyydTest do
     end
   end
 
-  describe "collections_for_user/1" do
+  describe "collections_for_user/2" do
     test "gets Collections for a given User by it's id" do
       use_cassette "collections_user_id" do
         {:ok, collections} = Fyyd.collections_for_user(Factory.optikfluffel().id)
@@ -134,7 +134,7 @@ defmodule FyydTest do
     end
   end
 
-  describe "collections_for_user_by_nick/1" do
+  describe "collections_for_user_by_nick/2" do
     test "gets Collections for a given User by it's nick" do
       use_cassette "collections_user_nick" do
         assert {:ok, collections} = Fyyd.collections_for_user_by_nick(Factory.optikfluffel().nick)
