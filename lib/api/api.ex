@@ -31,6 +31,21 @@ defmodule Fyyd.API do
     end
   end
 
+  @doc """
+  Helper to get the authorization url with a given `client_id`.
+  For details have a look at https://github.com/eazyliving/fyyd-api#authorization.
+
+  ## Example
+
+      iex> Fyyd.API.authorize_url("1a2b3c")
+      "https://fyyd.de/oauth/authorize?client_id=1a2b3c"
+
+  """
+  @spec authorize_url(String.t()) :: String.t()
+  def authorize_url(client_id) do
+    "https://fyyd.de/oauth/authorize?client_id=#{client_id}"
+  end
+
   # ---------------------------------------- HTTPoison.Base specific
   def process_url(url), do: @base_url <> "/" <> @api_version <> url
 
