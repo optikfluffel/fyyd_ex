@@ -15,7 +15,7 @@ by adding `fyyd_ex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:fyyd_ex, "~> 0.1"}
+    {:fyyd_ex, "~> 0.2"}
   ]
 end
 ```
