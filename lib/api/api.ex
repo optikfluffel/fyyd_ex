@@ -90,12 +90,6 @@ defmodule Fyyd.API do
     {:error, :not_found}
   end
 
-  defp handle_response(response) do
-    _ = Logger.error("[Fyyd.API] [handle_response] UNKNOWN RESPONSE")
-    _ = Logger.error(inspect(response))
-    {:error, :unknown}
-  end
-
   # Generates an authorization header from a given `access_token`.
   defp auth_header(access_token) do
     {:ok, [Authorization: "Bearer #{access_token}"]}
