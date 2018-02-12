@@ -76,6 +76,8 @@ be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex). -->
 ```elixir
 # authentication is needed for these, so you have to obtain an access_token first
 {:ok, account} = Fyyd.account_info(access_token)
+{:ok, curations} = Fyyd.account_curations(access_token)
+{:ok, collections} = Fyyd.account_collections(access_token)
 ```
 
 ## Development

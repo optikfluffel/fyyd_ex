@@ -5,10 +5,13 @@ defmodule FyydTest do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   alias Fyyd.Factory
+  alias Fyyd.Account
   alias Fyyd.Curations.Curation
   alias Fyyd.Episodes.Episode
   alias Fyyd.Collections.Collection
   alias Fyyd.Podcasts.Podcast
+
+  @super_secret_access_token "TO RE-RECORD THE ExVCR CASETTE SET A VALID TOKEN HERE"
 
   setup_all do
     HTTPoison.start()
@@ -160,8 +163,34 @@ defmodule FyydTest do
       ExVCR.Config.filter_request_headers("Authorization")
 
       use_cassette "account_info" do
-        access_token = "TO RE-RECORD THE ExVCR CASETTE SET A VALID TOKEN HERE"
-        assert {:ok, %Fyyd.Account{}} = Fyyd.account_info(access_token)
+        access_token = @super_secret_access_token
+        assert {:ok, %Account{}} = Fyyd.account_info(access_token)
+      end
+    end
+  end
+
+  describe "account_curations/1" do
+    test "gets AccountÄ curations corresponding to the given access_token" do
+      ExVCR.Config.filter_request_headers("Authorization")
+
+      use_cassette "account_curations" do
+        access_token = @super_secret_access_token
+        {:ok, curations} = Fyyd.account_curations(access_token)
+
+        assert %Curation{} = List.first(curations)
+      end
+    end
+  end
+
+  describe "account_collections/1" do
+    test "gets Account's collections corresponding to the given access_token" do
+      ExVCR.Config.filter_request_headers("Authorization")
+
+      use_cassette "account_collections" do
+        access_token = @super_secret_access_token
+        {:ok, collections} = Fyyd.account_collections(access_token)
+
+        assert %Collection{} = List.first(collections)
       end
     end
   end

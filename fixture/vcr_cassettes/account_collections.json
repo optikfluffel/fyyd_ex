@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.fyyd.de/0.2/account/collections"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\n    \"status\": 1,\n    \"msg\": \"ok\",\n    \"meta\": {\n        \"API_INFO\": {\n            \"API_VERSION\": 0.2\n        }\n    },\n    \"data\": [\n        {\n            \"title\": \"public test collection\",\n            \"id\": 784,\n            \"description\": \"mainly for testing https:\\/\\/github.com\\/optikfluffel\\/fyyd_ex\",\n            \"layoutImageURL\": \"https:\\/\\/img.fyyd.de\\/collection\\/layout\\/784.jpg?et=a252ee89acfbfb45ee9cb784a5b751eb\",\n            \"smallImageURL\": \"https:\\/\\/img.fyyd.de\\/collection\\/small\\/784.jpg?et=a252ee89acfbfb45ee9cb784a5b751eb\",\n            \"thumbImageURL\": \"https:\\/\\/img.fyyd.de\\/collection\\/thumbs\\/784.png?et=a252ee89acfbfb45ee9cb784a5b751eb\",\n            \"microImageURL\": \"https:\\/\\/img.fyyd.de\\/collection\\/micro\\/784.png?et=a252ee89acfbfb45ee9cb784a5b751eb\",\n            \"slug\": \"ee749d2f70420454714c01ee524a232e\",\n            \"user_id\": 2078,\n            \"url\": \"https:\\/\\/fyyd.de\\/user\\/optikfluffel\\/collection\\/ee749d2f70420454714c01ee524a232e\"\n        }\n    ]\n}",
+      "headers": {
+        "Date": "Mon, 12 Feb 2018 14:51:27 GMT",
+        "Server": "Apache/2.4.10 (Debian)",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "X-Powered-By": "Fat-Free Framework",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Expires": "Thu, 01 Jan 1970 00:00:00 +0000",
+        "Vary": "User-Agent",
+        "Content-Length": "989",
+        "Content-Type": "application/json; charset=UTF-8"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

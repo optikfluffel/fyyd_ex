@@ -38,4 +38,8 @@ defmodule Fyyd do
   # ---------------------------------------- 👤 Account
   @spec account_info(String.t()) :: {:ok, Account.t()}
   defdelegate account_info(access_token), to: Account, as: :info
+  @spec account_curations(String.t()) :: {:ok, [Curation.t()]}
+  defdelegate account_curations(access_token), to: Account, as: :curations
+  @spec account_collections(String.t()) :: {:ok, [Collection.t()]}
+  defdelegate account_collections(access_token), to: Account, as: :collections
 end
