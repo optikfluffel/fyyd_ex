@@ -27,7 +27,7 @@ defmodule Fyyd.Curations.Curation do
         }
 
   @doc """
-  Takes the @expected_fields out of a given map and builds a %Curation{} struct out of it.
+  Takes the `@expected_fields` out of a given map and builds a `%Curation{}` struct out of it.
   """
   @spec extract_from_response(map) :: {:ok, t}
   def extract_from_response(data) do
@@ -40,7 +40,7 @@ defmodule Fyyd.Curations.Curation do
   end
 
   @doc """
-  Same as extract_from_response/1, but includes episodes
+  Same as `extract_from_response/1`, but includes episodes
   """
   @spec extract_from_response_with_episodes(map) :: {:ok, t}
   def extract_from_response_with_episodes(data) do
