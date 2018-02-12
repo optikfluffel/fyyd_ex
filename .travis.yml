@@ -18,8 +18,6 @@ install:
   # Store in $PLT_LOCATION
   # - wget -O $PLT_LOCATION https://raw.github.com/danielberkompas/travis_elixir_plts/master/$PLT_FILENAME
 script:
-  - mix test
   - mix credo
-  # - dialyzer --no_check_plt --plt $PLT_LOCATION --no_native _build/test/lib/fyyd_ex/ebin
-after_script:
   - mix coveralls.travis
+  # - dialyzer --no_check_plt --plt $PLT_LOCATION --no_native _build/test/lib/fyyd_ex/ebin

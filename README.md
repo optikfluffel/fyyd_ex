@@ -15,7 +15,7 @@ by adding `fyyd_ex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:fyyd_ex, "~> 0.1"}
+    {:fyyd_ex, "~> 0.2"}
   ]
 end
 ```
@@ -69,6 +69,15 @@ be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex). -->
 {:ok, collections} = Fyyd.collections_for_user(2078, include: :podcasts)
 {:ok, collections} = Fyyd.collections_for_user("2078", include: :podcasts)
 {:ok, collections} = Fyyd.collections_for_user_by_nick("optikfluffel", include: :podcasts)
+```
+
+### 👤 Account
+
+```elixir
+# authentication is needed for these, so you have to obtain an access_token first
+{:ok, account} = Fyyd.account_info(access_token)
+{:ok, curations} = Fyyd.account_curations(access_token)
+{:ok, collections} = Fyyd.account_collections(access_token)
 ```
 
 ## Development

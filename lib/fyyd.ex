@@ -3,6 +3,7 @@ defmodule Fyyd do
   Documentation for Fyyd.
   """
 
+  alias Fyyd.Account
   alias Fyyd.User
   alias Fyyd.Curations
   alias Fyyd.Curations.Curation
@@ -33,4 +34,12 @@ defmodule Fyyd do
   defdelegate collections_for_user_by_nick(nick, opts \\ []),
     to: Collections,
     as: :get_for_user_by_nick
+
+  # ---------------------------------------- 👤 Account
+  @spec account_info(String.t()) :: {:ok, Account.t()}
+  defdelegate account_info(access_token), to: Account, as: :info
+  @spec account_curations(String.t()) :: {:ok, [Curation.t()]}
+  defdelegate account_curations(access_token), to: Account, as: :curations
+  @spec account_collections(String.t()) :: {:ok, [Collection.t()]}
+  defdelegate account_collections(access_token), to: Account, as: :collections
 end

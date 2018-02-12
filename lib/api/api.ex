@@ -92,6 +92,8 @@ defmodule Fyyd.API do
 
   # Generates an authorization header from a given `access_token`.
   defp auth_header(access_token) do
-    {:ok, [Authorization: "Bearer #{access_token}"]}
+    header = [{"Authorization", "Bearer #{access_token}"}]
+
+    {:ok, header}
   end
 end

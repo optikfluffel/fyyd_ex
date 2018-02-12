@@ -1,0 +1,35 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.fyyd.de/0.2/account/info"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\n    \"status\": 1,\n    \"msg\": \"ok\",\n    \"meta\": {\n        \"API_INFO\": {\n            \"API_VERSION\": 0.2\n        }\n    },\n    \"data\": {\n        \"nick\": \"optikfluffel\",\n        \"id\": 2078,\n        \"fullname\": \"optikfluffel\",\n        \"bio\": \"Just looking around.\",\n        \"url\": \"https:\\/\\/www.instagram.com\\/optikfluffel\\/\",\n        \"layoutImageURL\": \"https:\\/\\/img.fyyd.de\\/user\\/layout\\/2078.jpg?et=644a12a72e1f75f671ede648850a0b98\",\n        \"thumbImageURL\": \"https:\\/\\/img.fyyd.de\\/user\\/thumbs\\/2078.png?et=644a12a72e1f75f671ede648850a0b98\",\n        \"smallImageURL\": \"https:\\/\\/img.fyyd.de\\/user\\/small\\/2078.jpg?et=644a12a72e1f75f671ede648850a0b98\",\n        \"microImageURL\": \"https:\\/\\/img.fyyd.de\\/user\\/micro\\/2078.png?et=644a12a72e1f75f671ede648850a0b98\"\n    }\n}",
+      "headers": {
+        "Date": "Mon, 12 Feb 2018 14:13:48 GMT",
+        "Server": "Apache/2.4.10 (Debian)",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "X-Powered-By": "Fat-Free Framework",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Expires": "Thu, 01 Jan 1970 00:00:00 +0000",
+        "Vary": "User-Agent",
+        "Content-Length": "768",
+        "Content-Type": "application/json; charset=UTF-8"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

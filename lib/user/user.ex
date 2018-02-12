@@ -24,7 +24,7 @@ defmodule Fyyd.User do
   @doc """
   Gets public available information about a registered account by it's `id`.
   """
-  @spec get(integer | String.t()) :: {:ok, %__MODULE__{}}
+  @spec get(integer | String.t()) :: {:ok, t}
   def get(id) when is_integer(id) do
     id
     |> Integer.to_string()
@@ -40,7 +40,7 @@ defmodule Fyyd.User do
   @doc """
   Gets public available information about a registered account by it's `nick`.
   """
-  @spec get_by_nick(String.t()) :: {:ok, %__MODULE__{}}
+  @spec get_by_nick(String.t()) :: {:ok, t}
   def get_by_nick(nick) do
     with {:ok, user_data} <- API.get_data("/user?nick=" <> nick) do
       extract_from_response(user_data)
@@ -50,7 +50,7 @@ defmodule Fyyd.User do
   @doc """
   Takes the @expected_fields out of a given map and builds a %User{} struct out of it.
   """
-  @spec extract_from_response(map) :: {:ok, %__MODULE__{}}
+  @spec extract_from_response(map) :: {:ok, t}
   def extract_from_response(data) do
     user =
       data

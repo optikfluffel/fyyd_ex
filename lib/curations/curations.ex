@@ -9,7 +9,7 @@ defmodule Fyyd.Curations do
   @doc """
   Gets Curations for a given User by it's `id`.
   """
-  @spec get_for_user(integer | String.t(), key: atom) :: {:ok, [%Curation{}]}
+  @spec get_for_user(integer | String.t(), key: atom) :: {:ok, [Curation.t()]}
   def get_for_user(id, opts) when is_integer(id) do
     id
     |> Integer.to_string()
