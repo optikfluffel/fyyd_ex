@@ -28,7 +28,7 @@ defmodule Fyyd.Collections.Collection do
   @doc """
   Takes the @expected_fields out of a given map and builds a %Collection{} struct out of it.
   """
-  @spec extract_from_response(map) :: {:ok, %__MODULE__{}}
+  @spec extract_from_response(map) :: {:ok, t}
   def extract_from_response(data) do
     collection =
       data
@@ -41,7 +41,7 @@ defmodule Fyyd.Collections.Collection do
   @doc """
   Same as `extract_from_response/1` but including podcasts.
   """
-  @spec extract_from_response_with_podcasts(map) :: {:ok, %__MODULE__{}}
+  @spec extract_from_response_with_podcasts(map) :: {:ok, t}
   def extract_from_response_with_podcasts(data) do
     collection_with_raw_podcasts = Utils.extract_from_response(data, @expected_fields)
 
