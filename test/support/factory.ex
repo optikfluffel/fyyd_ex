@@ -230,6 +230,33 @@ defmodule Fyyd.Factory do
     end
   end
 
+  def category_map_without_subs do
+    ExUnitProperties.gen all base_category <- base_category_map() do
+      Map.put_new(base_category, "subcategories", [])
+    end
+  end
+
+  def category_map_with_subs do
+    ExUnitProperties.gen all base_category <- base_category_map(),
+                             subcategories <- StreamData.uniq_list_of(base_category_map()) do
+      Map.put_new(base_category, "subcategories", subcategories)
+    end
+  end
+
+  def base_category_map do
+    ExUnitProperties.gen all id <- StreamData.integer(),
+                             name <- non_empty_string(),
+                             name_de <- non_empty_string(),
+                             slug <- non_empty_string() do
+      %{
+        "id" => id,
+        "name" => name,
+        "name_de" => name_de,
+        "slug" => slug
+      }
+    end
+  end
+
   # ---------------------------------------- Hardcoded Test Values
   def optikfluffel do
     %User{

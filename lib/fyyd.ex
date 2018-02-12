@@ -5,6 +5,8 @@ defmodule Fyyd do
 
   alias Fyyd.Account
   alias Fyyd.User
+  alias Fyyd.Categories
+  alias Fyyd.Categories.Category
   alias Fyyd.Curations
   alias Fyyd.Curations.Curation
   alias Fyyd.Collections
@@ -50,4 +52,7 @@ defmodule Fyyd do
   # ---------------------------------------- 🎧 Podcasts
   @spec podcast(integer | String.t(), key: atom) :: {:ok, Podcast.t()}
   defdelegate podcast(id_or_slug, opts \\ []), to: Podcasts, as: :get
+
+  @spec categories :: {:ok, [Category.t()]}
+  defdelegate categories, to: Categories, as: :all
 end

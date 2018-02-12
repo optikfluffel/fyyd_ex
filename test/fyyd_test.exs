@@ -6,6 +6,7 @@ defmodule FyydTest do
 
   alias Fyyd.Factory
   alias Fyyd.Account
+  alias Fyyd.Categories.Category
   alias Fyyd.Curations.Curation
   alias Fyyd.Episodes.Episode
   alias Fyyd.Collections.Collection
@@ -221,6 +222,16 @@ defmodule FyydTest do
         {:ok, podcast} = Fyyd.podcast("der-lila-podcast", include: :episodes)
 
         assert %Episode{} = List.first(podcast.episodes)
+      end
+    end
+  end
+
+  describe "categories/0" do
+    test "gets all Categories" do
+      use_cassette "categories" do
+        {:ok, categories} = Fyyd.categories()
+
+        assert %Category{} = List.first(categories)
       end
     end
   end
