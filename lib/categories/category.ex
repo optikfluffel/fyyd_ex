@@ -35,7 +35,7 @@ defmodule Fyyd.Categories.Category do
       raw_subcategories when is_list(raw_subcategories) ->
         subcategories =
           raw_subcategories
-          |> Enum.map(&extract_from_response/1)
+          |> Stream.map(&extract_from_response/1)
           |> Enum.map(fn {:ok, subcategory} -> subcategory end)
 
         category_including_subs = Map.put(category, :subcategories, subcategories)

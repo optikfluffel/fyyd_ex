@@ -49,7 +49,7 @@ defmodule Fyyd.Collections do
   def extract_from_response(list_of_maps) when is_list(list_of_maps) do
     collections =
       list_of_maps
-      |> Enum.map(&Collection.extract_from_response/1)
+      |> Stream.map(&Collection.extract_from_response/1)
       |> Enum.map(fn {:ok, collection} -> collection end)
 
     {:ok, collections}
@@ -62,7 +62,7 @@ defmodule Fyyd.Collections do
   def extract_from_response_with_podcasts(list_of_maps) when is_list(list_of_maps) do
     collections =
       list_of_maps
-      |> Enum.map(&Collection.extract_from_response_with_podcasts/1)
+      |> Stream.map(&Collection.extract_from_response_with_podcasts/1)
       |> Enum.map(fn {:ok, collection} -> collection end)
 
     {:ok, collections}

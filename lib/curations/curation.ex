@@ -54,7 +54,7 @@ defmodule Fyyd.Curations.Curation do
 
     curation =
       curation_with_raw_episodes
-      |> Enum.filter(fn {key, _value} -> key != :episodes end)
+      |> Stream.filter(fn {key, _value} -> key != :episodes end)
       |> Enum.concat([{:episodes, episodes}])
       |> Utils.struct_from_keyword_list(__MODULE__)
 

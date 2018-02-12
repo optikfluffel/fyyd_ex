@@ -51,7 +51,7 @@ defmodule Fyyd.Curations do
   def extract_from_response(list_of_maps) when is_list(list_of_maps) do
     curations =
       list_of_maps
-      |> Enum.map(&Curation.extract_from_response/1)
+      |> Stream.map(&Curation.extract_from_response/1)
       |> Enum.map(fn {:ok, curation} -> curation end)
 
     {:ok, curations}
@@ -61,7 +61,7 @@ defmodule Fyyd.Curations do
   def extract_from_response_with_episodes(list_of_maps) when is_list(list_of_maps) do
     curations =
       list_of_maps
-      |> Enum.map(&Curation.extract_from_response_with_episodes/1)
+      |> Stream.map(&Curation.extract_from_response_with_episodes/1)
       |> Enum.map(fn {:ok, curation} -> curation end)
 
     {:ok, curations}

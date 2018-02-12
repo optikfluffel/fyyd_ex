@@ -21,7 +21,7 @@ defmodule Fyyd.Categories do
   def extract_from_response(list_of_maps) when is_list(list_of_maps) do
     categories =
       list_of_maps
-      |> Enum.map(&Category.extract_from_response/1)
+      |> Stream.map(&Category.extract_from_response/1)
       |> Enum.map(fn {:ok, category} -> category end)
 
     {:ok, categories}

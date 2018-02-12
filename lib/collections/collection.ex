@@ -53,7 +53,7 @@ defmodule Fyyd.Collections.Collection do
 
     collection =
       collection_with_raw_podcasts
-      |> Enum.filter(fn {key, _value} -> key != :podcasts end)
+      |> Stream.filter(fn {key, _value} -> key != :podcasts end)
       |> Enum.concat([{:podcasts, podcasts}])
       |> Utils.struct_from_keyword_list(__MODULE__)
 
