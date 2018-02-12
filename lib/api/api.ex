@@ -28,6 +28,20 @@ defmodule Fyyd.API do
     end
   end
 
+  @doc """
+  Get and unwrap data, where authorization is needed for the given `url` and `access_token`.
+
+  ## Usage
+
+      {:ok, account_data} = Fyyd.API.get_authorized_data("/account/info", access_token)
+
+  """
+  @spec get_authorized_data(String.t(), String.t()) :: {:ok, map} | {:ok, [map]} | {:error, any}
+  def get_authorized_data(url, access_token) do
+    with {:ok, headers} <- auth_header(access_token),
+         {:ok, response} <- get(url, headers),
+         {:ok, data} <- handle_response(response) do
+      {:ok, data}
     end
   end
 
@@ -76,5 +90,10 @@ defmodule Fyyd.API do
     _ = Logger.error("[Fyyd.API] [handle_response] UNKNOWN RESPONSE")
     _ = Logger.error(inspect(response))
     {:error, :unknown}
+  end
+
+  # Generates an authorization header from a given `access_token`.
+  defp auth_header(access_token) do
+    {:ok, [Authorization: "Bearer #{access_token}"]}
   end
 end
