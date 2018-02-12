@@ -154,4 +154,15 @@ defmodule FyydTest do
       end
     end
   end
+
+  describe "account_info/1" do
+    test "gets Account information corresponding to the given access_token" do
+      ExVCR.Config.filter_request_headers("Authorization")
+
+      use_cassette "account_info" do
+        access_token = "TO RE-RECORD THE ExVCR CASETTE SET A VALID TOKEN HERE"
+        assert {:ok, %Fyyd.Account{}} = Fyyd.account_info(access_token)
+      end
+    end
+  end
 end

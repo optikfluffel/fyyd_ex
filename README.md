@@ -71,6 +71,13 @@ be found at [https://hexdocs.pm/fyyd_ex](https://hexdocs.pm/fyyd_ex). -->
 {:ok, collections} = Fyyd.collections_for_user_by_nick("optikfluffel", include: :podcasts)
 ```
 
+### 👤 Account
+
+```elixir
+# authentication is needed for these, so you have to obtain an access_token first
+{:ok, account} = Fyyd.account_info(access_token)
+```
+
 ## Development
 
 - Install dependencies with `mix do deps.get, deps.compile`

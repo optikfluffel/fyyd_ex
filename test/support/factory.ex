@@ -206,6 +206,30 @@ defmodule Fyyd.Factory do
     end
   end
 
+  def account_map do
+    ExUnitProperties.gen all id <- StreamData.integer(),
+                             fullname <- non_empty_string(),
+                             bio <- non_empty_string(),
+                             nick <- non_empty_string(),
+                             url <- non_empty_string(),
+                             layoutImageURL <- non_empty_string(),
+                             microImageURL <- non_empty_string(),
+                             smallImageURL <- non_empty_string(),
+                             thumbImageURL <- non_empty_string() do
+      %{
+        "id" => id,
+        "fullname" => fullname,
+        "bio" => bio,
+        "nick" => nick,
+        "url" => url,
+        "layoutImageURL" => layoutImageURL,
+        "microImageURL" => microImageURL,
+        "smallImageURL" => smallImageURL,
+        "thumbImageURL" => thumbImageURL
+      }
+    end
+  end
+
   # ---------------------------------------- Hardcoded Test Values
   def optikfluffel do
     %User{
