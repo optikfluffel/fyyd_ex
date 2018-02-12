@@ -194,4 +194,18 @@ defmodule FyydTest do
       end
     end
   end
+
+  describe "podcast/1" do
+    test "gets a Podcast by it's id" do
+      use_cassette "podcast_id" do
+        assert {:ok, %Podcast{}} = Fyyd.podcast(344)
+      end
+    end
+
+    test "gets a Podcast by it's slug" do
+      use_cassette "podcast_slug" do
+        assert {:ok, %Podcast{}} = Fyyd.podcast("der-lila-podcast")
+      end
+    end
+  end
 end

@@ -83,6 +83,16 @@ _See [github.com/eazyliving/fyyd-api#authorization](https://github.com/eazylivin
 {:ok, collections} = Fyyd.account_collections(access_token)
 ```
 
+### 🎧 Podcasts
+
+```elixir
+# by id
+{:ok, podcast} = Fyyd.podcast(344)
+
+# or by slug
+{:ok, podcast} = Fyyd.podcast("der-lila-podcast")
+```
+
 ## Development
 
 - Install dependencies with `mix do deps.get, deps.compile`

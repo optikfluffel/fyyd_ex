@@ -9,6 +9,8 @@ defmodule Fyyd do
   alias Fyyd.Curations.Curation
   alias Fyyd.Collections
   alias Fyyd.Collections.Collection
+  alias Fyyd.Podcasts
+  alias Fyyd.Podcasts.Podcast
 
   # ---------------------------------------- 😊 User
   @spec user(integer | String.t()) :: {:ok, User.t()}
@@ -44,4 +46,8 @@ defmodule Fyyd do
 
   @spec account_collections(String.t()) :: {:ok, [Collection.t()]}
   defdelegate account_collections(access_token), to: Account, as: :collections
+
+  # ---------------------------------------- 🎧 Podcasts
+  @spec podcast(integer | String.t()) :: {:ok, Podcast.t()}
+  defdelegate podcast(id_or_slug), to: Podcasts, as: :get
 end
