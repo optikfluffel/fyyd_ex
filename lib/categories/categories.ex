@@ -8,7 +8,7 @@ defmodule Fyyd.Categories do
   @doc """
   Gets the complete categories tree.
   """
-  @spec all :: {:ok, [CategoryTree.t()]}
+  @spec all :: {:ok, CategoryTree.t()}
   def all do
     with {:ok, categories_data} <- API.get_data("/categories") do
       CategoryTree.extract_from_response(categories_data)

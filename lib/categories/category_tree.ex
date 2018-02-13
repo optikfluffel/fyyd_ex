@@ -3,6 +3,8 @@ defmodule Fyyd.Categories.CategoryTree do
 
   alias Fyyd.Categories.CategoryTree.Category
 
+  @type t :: [Category.t()]
+
   @doc """
   Takes a list of maps and builds a list of %Category{} structs out of it.
   """
