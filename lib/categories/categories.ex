@@ -3,14 +3,15 @@ defmodule Fyyd.Categories do
 
   alias Fyyd.API
   alias Fyyd.Categories.Category
+  alias Fyyd.Categories.CategoryTree
 
   @doc """
   Gets the complete categories tree.
   """
-  @spec all :: {:ok, [Category.t()]}
+  @spec all :: {:ok, [CategoryTree.t()]}
   def all do
     with {:ok, categories_data} <- API.get_data("/categories") do
-      extract_from_response(categories_data)
+      CategoryTree.extract_from_response(categories_data)
     end
   end
 

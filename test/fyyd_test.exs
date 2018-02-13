@@ -6,7 +6,7 @@ defmodule FyydTest do
 
   alias Fyyd.Factory
   alias Fyyd.Account
-  alias Fyyd.Categories.Category
+  alias Fyyd.Categories.CategoryTree.Category
   alias Fyyd.Curations.Curation
   alias Fyyd.Episodes.Episode
   alias Fyyd.Collections.Collection
