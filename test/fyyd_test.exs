@@ -226,12 +226,12 @@ defmodule FyydTest do
     end
   end
 
-  describe "categories/0" do
+  describe "category_tree/0" do
     test "gets all Categories" do
       use_cassette "categories" do
-        {:ok, categories} = Fyyd.categories()
+        {:ok, category_tree} = Fyyd.category_tree()
 
-        assert %Category{} = List.first(categories)
+        assert %Category{} = List.first(category_tree)
       end
     end
   end

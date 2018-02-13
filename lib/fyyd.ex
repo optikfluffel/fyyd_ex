@@ -54,6 +54,6 @@ defmodule Fyyd do
   @spec podcast(integer | String.t(), key: atom) :: {:ok, Podcast.t()}
   defdelegate podcast(id_or_slug, opts \\ []), to: Podcasts, as: :get
 
-  @spec categories :: {:ok, CategoryTree.t()}
-  defdelegate categories, to: Categories, as: :all
+  @spec category_tree :: {:ok, CategoryTree.t()}
+  defdelegate category_tree, to: Categories, as: :tree
 end
