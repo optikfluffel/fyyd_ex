@@ -45,9 +45,9 @@ defmodule FyydEx.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 0.13"},
+      {:httpoison, "~> 1.0"},
       {:poison, "~> 3.1"},
-      {:timex, "~> 3.1"},
+      {:timex, "~> 3.2"},
       # dev tools
       {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
       {:ex_doc, "~> 0.18", only: :dev, runtime: false},
