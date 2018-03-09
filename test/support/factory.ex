@@ -36,7 +36,8 @@ defmodule Fyyd.Factory do
         "fullname" => "Fullname " <> nick,
         "bio" => bio,
         "url" => "https://" <> url <> tld,
-        "layoutImageURL" => @user_image <> "/layout/" <> Integer.to_string(id) <> ".png?et=" <> et,
+        "layoutImageURL" =>
+          @user_image <> "/layout/" <> Integer.to_string(id) <> ".png?et=" <> et,
         "thumbImageURL" => @user_image <> "/micro/" <> Integer.to_string(id) <> ".png?et=" <> et,
         "microImageURL" => @user_image <> "/thumbs/" <> Integer.to_string(id) <> ".png?et=" <> et
       }
@@ -238,7 +239,8 @@ defmodule Fyyd.Factory do
       id: 2078,
       layoutImageURL:
         "https://img.fyyd.de/user/layout/2078.jpg?et=644a12a72e1f75f671ede648850a0b98",
-      microImageURL: "https://img.fyyd.de/user/micro/2078.png?et=644a12a72e1f75f671ede648850a0b98",
+      microImageURL:
+        "https://img.fyyd.de/user/micro/2078.png?et=644a12a72e1f75f671ede648850a0b98",
       nick: "optikfluffel",
       thumbImageURL:
         "https://img.fyyd.de/user/thumbs/2078.png?et=644a12a72e1f75f671ede648850a0b98",
