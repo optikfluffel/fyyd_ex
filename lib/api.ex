@@ -5,8 +5,6 @@ defmodule Fyyd.API do
 
   use HTTPoison.Base
 
-  alias Fyyd.API.Response
-
   require Logger
 
   @api_version "0.2"
@@ -61,24 +59,17 @@ defmodule Fyyd.API do
   end
 
   # ---------------------------------------- HTTPoison.Base specific
-  def process_url(url), do: @base_url <> "/" <> @api_version <> url
+  def process_request_url(url), do: @base_url <> "/" <> @api_version <> url
 
   def process_response_body(""), do: nil
 
   def process_response_body(body) do
-    Poison.decode!(
-      body,
-      as: %Response{
-        meta: %Response.Meta{
-          API_INFO: %Response.APIInfo{}
-        }
-      }
-    )
+    Jason.decode!(body)
   end
 
   # ----------------------------------------Private Helper
   # Unwraps the response data from a given `%HTTPoison.Response{}`.
-  defp handle_response(%HTTPoison.Response{status_code: 200, body: %Response{data: data}}) do
+  defp handle_response(%HTTPoison.Response{status_code: 200, body: %{"data" => data}}) do
     {:ok, data}
   end
 

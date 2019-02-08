@@ -6,8 +6,8 @@ defmodule FyydEx.Mixfile do
   def project do
     [
       app: :fyyd_ex,
-      version: "0.2.0",
-      elixir: "~> 1.5",
+      version: "0.2.4",
+      elixir: "~> 1.6",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -45,16 +45,16 @@ defmodule FyydEx.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 0.13"},
-      {:poison, "~> 3.1"},
-      {:timex, "~> 3.1"},
+      {:httpoison, "~> 1.0"},
+      {:jason, "~> 1.1"},
       # dev tools
-      {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
-      {:ex_doc, "~> 0.18", only: :dev, runtime: false},
-      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:mix_test_watch, "~> 0.9", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+      {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # test tools
-      {:excoveralls, "~> 0.8", only: :test, runtime: false},
+      {:timex, "~> 3.5", only: :test},
+      {:excoveralls, "~> 0.10", only: :test, runtime: false},
       {:stream_data, "~> 0.4", only: :test},
       {:exvcr, "~> 0.10", only: :test}
     ]
