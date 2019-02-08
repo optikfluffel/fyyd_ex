@@ -1,7 +1,5 @@
 defmodule Fyyd.Podcasts do
-  @moduledoc """
-
-  """
+  @moduledoc false
 
   alias Fyyd.Podcasts.Podcast
 
