@@ -46,15 +46,15 @@ defmodule FyydEx.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 1.0"},
-      {:poison, "~> 3.1"},
-      {:timex, "~> 3.2"},
+      {:poison, "~> 4.0"},
+      {:timex, "~> 3.5"},
       # dev tools
-      {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
-      {:ex_doc, "~> 0.18", only: :dev, runtime: false},
-      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:mix_test_watch, "~> 0.9", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+      {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # test tools
-      {:excoveralls, "~> 0.8", only: :test, runtime: false},
+      {:excoveralls, "~> 0.10", only: :test, runtime: false},
       {:stream_data, "~> 0.4", only: :test},
       {:exvcr, "~> 0.10", only: :test}
     ]
