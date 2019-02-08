@@ -46,7 +46,7 @@ defmodule FyydEx.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 1.0"},
-      {:poison, "~> 4.0"},
+      {:jason, "~> 1.1"},
       {:timex, "~> 3.5"},
       # dev tools
       {:mix_test_watch, "~> 0.9", only: :dev, runtime: false},

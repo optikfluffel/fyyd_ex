@@ -15,10 +15,10 @@ defmodule Fyyd.APITest do
     HTTPoison.start()
   end
 
-  property "process_url/1 results always start with base_url followed by version" do
+  property "process_request_url/1 results always start with base_url followed by version" do
     check all string <- StreamData.string(:alphanumeric) do
       assert string
-             |> API.process_url()
+             |> API.process_request_url()
              |> String.starts_with?(@base_url_with_version)
     end
   end
