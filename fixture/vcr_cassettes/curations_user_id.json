@@ -10,11 +10,10 @@
     },
     "response": {
       "binary": false,
-      "body": "{\n    \"status\": 1,\n    \"msg\": \"ok\",\n    \"meta\": {\n        \"API_INFO\": {\n            \"API_VERSION\": 0.2\n        }\n    },\n    \"data\": [\n        {\n            \"title\": \"test curation for optikfluffel\",\n            \"id\": 2087,\n            \"description\": \"public test feed for optikfluffel\",\n            \"layoutImageURL\": \"https:\\/\\/img.fyyd.de\\/curation\\/layout\\/2087.jpg?et=9408c6befe81e94f3b6899c0b9b12041\",\n            \"thumbImageURL\": \"https:\\/\\/img.fyyd.de\\/curation\\/thumbs\\/2087.png?et=9408c6befe81e94f3b6899c0b9b12041\",\n            \"smallImageURL\": \"https:\\/\\/img.fyyd.de\\/curation\\/small\\/2087.jpg?et=9408c6befe81e94f3b6899c0b9b12041\",\n            \"microImageURL\": \"https:\\/\\/img.fyyd.de\\/curation\\/micro\\/2087.png?et=9408c6befe81e94f3b6899c0b9b12041\",\n            \"public\": 1,\n            \"slug\": \"6d9d617d6febc168b11fc630f5435d1b\",\n            \"user_id\": 2078,\n            \"type\": 1,\n            \"categories\": [],\n            \"url\": \"https:\\/\\/fyyd.de\\/user\\/optikfluffel\\/curation\\/6d9d617d6febc168b11fc630f5435d1b\",\n            \"xmlURL\": \"https:\\/\\/feeds.fyyd.de\\/optikfluffel\\/6d9d617d6febc168b11fc630f5435d1b\"\n        }\n    ]\n}",
+      "body": "{\n    \"status\": 1,\n    \"msg\": \"ok\",\n    \"meta\": {\n        \"API_INFO\": {\n            \"API_VERSION\": \"0.2\"\n        },\n        \"SERVER\": \"195.201.115.6\",\n        \"duration\": 0\n    },\n    \"data\": [\n        {\n            \"title\": \"test curation for optikfluffel\",\n            \"id\": 2087,\n            \"description\": \"public test feed for optikfluffel\",\n            \"layoutImageURL\": \"https:\\/\\/img-1.fyyd.de\\/curation\\/layout\\/2087.jpg?et=9408c6befe81e94f3b6899c0b9b12041\",\n            \"thumbImageURL\": \"https:\\/\\/img-1.fyyd.de\\/curation\\/thumbs\\/2087.png?et=9408c6befe81e94f3b6899c0b9b12041\",\n            \"smallImageURL\": \"https:\\/\\/img-1.fyyd.de\\/curation\\/small\\/2087.jpg?et=9408c6befe81e94f3b6899c0b9b12041\",\n            \"microImageURL\": \"https:\\/\\/img-1.fyyd.de\\/curation\\/micro\\/2087.png?et=9408c6befe81e94f3b6899c0b9b12041\",\n            \"public\": 1,\n            \"slug\": \"6d9d617d6febc168b11fc630f5435d1b\",\n            \"user_id\": 2078,\n            \"type\": 1,\n            \"categories\": [\n                48,\n                62\n            ],\n            \"categoriesManually\": 0,\n            \"url\": \"https:\\/\\/fyyd.de\\/user\\/optikfluffel\\/curation\\/6d9d617d6febc168b11fc630f5435d1b\",\n            \"xmlURL\": \"https:\\/\\/feeds.fyyd.de\\/optikfluffel\\/6d9d617d6febc168b11fc630f5435d1b\"\n        }\n    ]\n}",
       "headers": {
-        "Date": "Sat, 18 Nov 2017 13:08:27 GMT",
-        "Server": "Apache/2.4.10 (Debian)",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "Date": "Fri, 08 Feb 2019 20:54:46 GMT",
+        "Server": "Apache/2.4.25 (Debian)",
         "X-Powered-By": "Fat-Free Framework",
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -22,8 +21,8 @@
         "Pragma": "no-cache",
         "Cache-Control": "no-cache, no-store, must-revalidate",
         "Expires": "Thu, 01 Jan 1970 00:00:00 +0000",
-        "Vary": "User-Agent",
-        "Content-Length": "1138",
+        "Vary": "Accept-Encoding,User-Agent",
+        "Content-Length": "1295",
         "Content-Type": "application/json; charset=UTF-8"
       },
       "status_code": 200,
