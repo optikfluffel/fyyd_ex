@@ -6,7 +6,7 @@ defmodule FyydEx.Mixfile do
   def project do
     [
       app: :fyyd_ex,
-      version: "0.2.3",
+      version: "0.2.4",
       elixir: "~> 1.6",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -47,13 +47,13 @@ defmodule FyydEx.Mixfile do
     [
       {:httpoison, "~> 1.0"},
       {:jason, "~> 1.1"},
-      {:timex, "~> 3.5"},
       # dev tools
       {:mix_test_watch, "~> 0.9", only: :dev, runtime: false},
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       # test tools
+      {:timex, "~> 3.5", only: :test},
       {:excoveralls, "~> 0.10", only: :test, runtime: false},
       {:stream_data, "~> 0.4", only: :test},
       {:exvcr, "~> 0.10", only: :test}
