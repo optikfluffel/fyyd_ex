@@ -1,7 +1,7 @@
 defmodule Fyyd.APITest do
   @moduledoc false
 
-  use ExUnit.Case, async: false
+  use ExUnit.Case, async: true
   use ExUnitProperties
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
