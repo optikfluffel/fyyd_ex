@@ -11,7 +11,9 @@ defmodule Fyyd.Curations.CurationTest do
   describe "extract_from_response/1" do
     property "converts a valid map to a %Curation{}" do
       check all map <- Factory.curation_map() do
-        assert {:ok, %Curation{}} = Curation.extract_from_response(map)
+        curation_id = map["id"]
+
+        assert {:ok, %Curation{id: ^curation_id}} = Curation.extract_from_response(map)
       end
     end
 
@@ -33,8 +35,11 @@ defmodule Fyyd.Curations.CurationTest do
       check all map <- Factory.curation_map_with_episodes() do
         assert {:ok, %Curation{} = curation} = Curation.extract_from_response_with_episodes(map)
 
+        assert is_list(curation.episodes)
+
         if length(curation.episodes) > 0 do
-          assert %Episode{} = List.first(curation.episodes)
+          assert %Episode{} = episode = Enum.random(curation.episodes)
+          assert episode.id != nil
         end
       end
     end

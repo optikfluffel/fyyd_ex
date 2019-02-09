@@ -5,11 +5,10 @@ defmodule Fyyd.Curations.Curation do
   alias Fyyd.Episodes
   alias Fyyd.Episodes.Episode
 
-  @expected_fields ~w(id title description public type slug url xmlURL
-                      layoutImageURL thumbImageURL microImageURL episodes)
+  @fields ~w(id title description public type slug url xmlURL
+                      layoutImageURL thumbImageURL microImageURL episodes)a
 
-  defstruct ~w(id title description public type slug url xmlURL
-               layoutImageURL thumbImageURL microImageURL episodes)a
+  defstruct @fields
 
   @type t :: %__MODULE__{
           id: integer,
@@ -27,13 +26,13 @@ defmodule Fyyd.Curations.Curation do
         }
 
   @doc """
-  Takes the `@expected_fields` out of a given map and builds a `%Curation{}` struct out of it.
+  Takes the `@fields` out of a given map and builds a `%Curation{}` struct out of it.
   """
   @spec extract_from_response(map) :: {:ok, t}
   def extract_from_response(data) do
     curation =
       data
-      |> Utils.extract_from_response(@expected_fields)
+      |> Utils.extract_from_response(@fields)
       |> Utils.struct_from_keyword_list(__MODULE__)
 
     {:ok, curation}
@@ -44,7 +43,7 @@ defmodule Fyyd.Curations.Curation do
   """
   @spec extract_from_response_with_episodes(map) :: {:ok, t}
   def extract_from_response_with_episodes(data) do
-    curation_with_raw_episodes = Utils.extract_from_response(data, @expected_fields)
+    curation_with_raw_episodes = Utils.extract_from_response(data, @fields)
 
     {:episodes, raw_episodes} =
       curation_with_raw_episodes

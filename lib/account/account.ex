@@ -8,10 +8,9 @@ defmodule Fyyd.Account do
   alias Fyyd.Collections
   alias Fyyd.Collections.Collection
 
-  @expected_fields ~w(id fullname bio nick url
-                      layoutImageURL microImageURL smallImageURL thumbImageURL)
+  @fields ~w(id fullname bio nick url layoutImageURL microImageURL smallImageURL thumbImageURL)a
 
-  defstruct ~w(id fullname bio nick url layoutImageURL microImageURL smallImageURL thumbImageURL)a
+  defstruct @fields
 
   @type t :: %__MODULE__{
           id: integer,
@@ -71,13 +70,13 @@ defmodule Fyyd.Account do
   end
 
   @doc """
-  Takes the @expected_fields out of a given map and builds an %Account{} struct out of it.
+  Takes the @fields out of a given map and builds an %Account{} struct out of it.
   """
   @spec extract_from_response(map) :: {:ok, t}
   def extract_from_response(data) do
     account =
       data
-      |> Utils.extract_from_response(@expected_fields)
+      |> Utils.extract_from_response(@fields)
       |> Utils.struct_from_keyword_list(__MODULE__)
 
     {:ok, account}

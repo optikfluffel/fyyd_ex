@@ -3,11 +3,10 @@ defmodule Fyyd.Episodes.Episode do
 
   alias Fyyd.Utils
 
-  @expected_fields ~w(id guid title url enclosure podcast_id imgURL
-                      pubdate duration url_fyyd description)
+  @fields ~w(id guid title url enclosure podcast_id imgURL
+                      pubdate duration url_fyyd description)a
 
-  defstruct ~w(id guid title url enclosure podcast_id imgURL
-               pubdate duration url_fyyd description)a
+  defstruct @fields
 
   @type t :: %__MODULE__{
           id: integer,
@@ -28,7 +27,7 @@ defmodule Fyyd.Episodes.Episode do
   def extract_from_response(data) do
     episode =
       data
-      |> Utils.extract_from_response(@expected_fields)
+      |> Utils.extract_from_response(@fields)
       |> Utils.struct_from_keyword_list(__MODULE__)
 
     {:ok, episode}

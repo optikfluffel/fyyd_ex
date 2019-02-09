@@ -6,6 +6,7 @@ defmodule Fyyd.CategoryTreeTest do
 
   alias Fyyd.Categories.CategoryTree
   alias Fyyd.Categories.CategoryTree.Category
+  alias Fyyd.Categories.CategoryTree.Subcategory
   alias Fyyd.Factory
 
   describe "extract_from_response/1" do
@@ -15,7 +16,8 @@ defmodule Fyyd.CategoryTreeTest do
         |> Enum.take(:rand.uniform(100))
         |> CategoryTree.extract_from_response()
 
-      assert %Category{} = List.first(categories)
+      assert %Category{} = random_category = Enum.random(categories)
+      assert random_category.id != nil
     end
 
     test "works with an empty list" do
@@ -26,13 +28,20 @@ defmodule Fyyd.CategoryTreeTest do
   describe "CategoryTree.Category.extract_from_response/1" do
     property "converts a valid map to a %Category{}" do
       check all map <- Factory.category_map_without_subs() do
-        assert {:ok, %Category{}} = Category.extract_from_response(map)
+        assert {:ok, %Category{subcategories: []}} = Category.extract_from_response(map)
       end
     end
 
     property "converts a valid map to a %Category{} when subcategories are included" do
       check all map <- Factory.category_map_with_subs() do
-        assert {:ok, %Category{}} = Category.extract_from_response(map)
+        assert {:ok, %Category{subcategories: subcategories}} =
+                 Category.extract_from_response(map)
+
+        assert is_list(subcategories)
+
+        if length(subcategories) > 0 do
+          assert %Subcategory{} = Enum.random(subcategories)
+        end
       end
     end
 

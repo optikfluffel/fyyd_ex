@@ -10,7 +10,9 @@ defmodule Fyyd.Episodes.EpisodeTest do
   describe "extract_from_response/1" do
     property "converts a valid map to a %Episode{}" do
       check all map <- Factory.episode_map() do
-        assert {:ok, %Episode{}} = Episode.extract_from_response(map)
+        episode_id = map["id"]
+
+        assert {:ok, %Episode{id: ^episode_id}} = Episode.extract_from_response(map)
       end
     end
 

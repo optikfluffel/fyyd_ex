@@ -9,15 +9,23 @@ defmodule Fyyd.Utils do
 
   ## Example
 
-      iex> Fyyd.Utils.extract_from_response(%{"foo" => "bar"}, ["foo"])
+      iex> Fyyd.Utils.extract_from_response(%{"foo" => "bar", "baz" => "-"}, [:foo])
       [foo: "bar"]
-      
+
+      iex> Fyyd.Utils.extract_from_response(%{"without" => "foo key"}, [:foo])
+      [foo: nil]
+
+      iex> Fyyd.Utils.extract_from_response(%{"without" => "expected_fields"})
+      []
+
   """
-  @spec extract_from_response(map, [String.t()]) :: [key: :atom]
+  @spec extract_from_response(map, [atom]) :: [key: :atom]
   def extract_from_response(data, expected_fields \\ []) do
-    data
-    |> Map.take(expected_fields)
-    |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
+    Enum.map(expected_fields, fn key ->
+      value = Map.get(data, to_string(key))
+
+      {key, value}
+    end)
   end
 
   @doc """

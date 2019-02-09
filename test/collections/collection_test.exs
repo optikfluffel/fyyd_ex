@@ -10,7 +10,9 @@ defmodule Fyyd.Collections.CollectionTest do
   describe "extract_from_response/1" do
     property "converts a valid map to a %Collection{}" do
       check all map <- Factory.collection_map() do
-        assert {:ok, %Collection{}} = Collection.extract_from_response(map)
+        collection_id = map["id"]
+
+        assert {:ok, %Collection{id: ^collection_id}} = Collection.extract_from_response(map)
       end
     end
 

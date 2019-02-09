@@ -10,7 +10,9 @@ defmodule Fyyd.AccountTest do
   describe "extract_from_response/1" do
     property "converts a valid map to a %Account{}" do
       check all map <- Factory.account_map() do
-        assert {:ok, %Account{}} = Account.extract_from_response(map)
+        map_id = map["id"]
+
+        assert {:ok, %Account{id: ^map_id}} = Account.extract_from_response(map)
       end
     end
   end

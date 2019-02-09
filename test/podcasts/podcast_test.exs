@@ -10,7 +10,9 @@ defmodule Fyyd.Podcasts.PodcastTest do
   describe "extract_from_response/1" do
     property "converts a valid map to a %Podcast{}" do
       check all map <- Factory.podcast_map() do
-        assert {:ok, %Podcast{}} = Podcast.extract_from_response(map)
+        postcast_id = map["id"]
+
+        assert {:ok, %Podcast{id: ^postcast_id}} = Podcast.extract_from_response(map)
       end
     end
 

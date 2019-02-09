@@ -5,15 +5,12 @@ defmodule Fyyd.Podcasts.Podcast do
   alias Fyyd.Episodes.Episode
   alias Fyyd.Utils
 
-  @expected_fields ~w(id description episode_count etag generator htmlURL imgURL language
+  @fields ~w(id description episode_count etag generator htmlURL imgURL language
                       lastmodified lastpoll lastpub layoutImageURL md5body microImageURL
                       rank slug smallImageURL status subtitle thumbImageURL title url_fyyd
-                      xmlUrl episodes)
+                      xmlUrl episodes)a
 
-  defstruct ~w(id description episode_count etag generator htmlURL imgURL language
-               lastmodified lastpoll lastpub layoutImageURL md5body microImageURL
-               rank slug smallImageURL status subtitle thumbImageURL title url_fyyd
-               xmlUrl episodes)a
+  defstruct @fields
 
   @type t :: %__MODULE__{
           id: integer,
@@ -43,13 +40,13 @@ defmodule Fyyd.Podcasts.Podcast do
         }
 
   @doc """
-  Takes the `@expected_fields` out of a given map and builds a `%Podcast{}` struct out of it.
+  Takes the `@fields` out of a given map and builds a `%Podcast{}` struct out of it.
   """
   @spec extract_from_response(map) :: {:ok, t}
   def extract_from_response(data) do
     podcast =
       data
-      |> Utils.extract_from_response(@expected_fields)
+      |> Utils.extract_from_response(@fields)
       |> Utils.struct_from_keyword_list(__MODULE__)
 
     {:ok, podcast}
@@ -60,7 +57,7 @@ defmodule Fyyd.Podcasts.Podcast do
   """
   @spec extract_from_response_with_episodes(map) :: {:ok, t}
   def extract_from_response_with_episodes(data) do
-    podcast_with_raw_episodes = Utils.extract_from_response(data, @expected_fields)
+    podcast_with_raw_episodes = Utils.extract_from_response(data, @fields)
 
     {:episodes, raw_episodes} =
       podcast_with_raw_episodes

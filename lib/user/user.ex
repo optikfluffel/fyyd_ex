@@ -6,9 +6,9 @@ defmodule Fyyd.User do
   alias Fyyd.API
   alias Fyyd.Utils
 
-  @expected_fields ~w(id nick fullname bio url layoutImageURL thumbImageURL microImageURL)
+  @fields ~w(id nick fullname bio url layoutImageURL thumbImageURL microImageURL)a
 
-  defstruct ~w(id nick fullname bio url layoutImageURL thumbImageURL microImageURL)a
+  defstruct @fields
 
   @type t :: %__MODULE__{
           id: integer,
@@ -48,13 +48,13 @@ defmodule Fyyd.User do
   end
 
   @doc """
-  Takes the @expected_fields out of a given map and builds a %User{} struct out of it.
+  Takes the @fields out of a given map and builds a %User{} struct out of it.
   """
   @spec extract_from_response(map) :: {:ok, t}
   def extract_from_response(data) do
     user =
       data
-      |> Utils.extract_from_response(@expected_fields)
+      |> Utils.extract_from_response(@fields)
       |> Utils.struct_from_keyword_list(__MODULE__)
 
     {:ok, user}

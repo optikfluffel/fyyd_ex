@@ -5,11 +5,10 @@ defmodule Fyyd.Collections.Collection do
   alias Fyyd.Podcasts
   alias Fyyd.Podcasts.Podcast
 
-  @expected_fields ~w(id title description layoutImageURL thumbImageURL microImageURL
-                      smallImageURL slug url user_id podcasts)
+  @fields ~w(id title description layoutImageURL thumbImageURL microImageURL
+                      smallImageURL slug url user_id podcasts)a
 
-  defstruct ~w(id title description layoutImageURL thumbImageURL microImageURL
-               smallImageURL slug url user_id podcasts)a
+  defstruct @fields
 
   @type t :: %__MODULE__{
           id: integer,
@@ -26,13 +25,13 @@ defmodule Fyyd.Collections.Collection do
         }
 
   @doc """
-  Takes the @expected_fields out of a given map and builds a %Collection{} struct out of it.
+  Takes the @fields out of a given map and builds a %Collection{} struct out of it.
   """
   @spec extract_from_response(map) :: {:ok, t}
   def extract_from_response(data) do
     collection =
       data
-      |> Utils.extract_from_response(@expected_fields)
+      |> Utils.extract_from_response(@fields)
       |> Utils.struct_from_keyword_list(__MODULE__)
 
     {:ok, collection}
@@ -43,7 +42,7 @@ defmodule Fyyd.Collections.Collection do
   """
   @spec extract_from_response_with_podcasts(map) :: {:ok, t}
   def extract_from_response_with_podcasts(data) do
-    collection_with_raw_podcasts = Utils.extract_from_response(data, @expected_fields)
+    collection_with_raw_podcasts = Utils.extract_from_response(data, @fields)
 
     {:podcasts, raw_podcasts} =
       collection_with_raw_podcasts

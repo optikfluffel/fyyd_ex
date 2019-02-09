@@ -14,7 +14,8 @@ defmodule Fyyd.CollectionsTest do
         |> Enum.take(:rand.uniform(100))
         |> Collections.extract_from_response()
 
-      assert %Collection{} = List.first(collections)
+      assert %Collection{} = random_collection = Enum.random(collections)
+      assert random_collection.id != nil
     end
 
     test "works with an empty list" do

@@ -3,9 +3,9 @@ defmodule Fyyd.Categories.Category do
 
   alias Fyyd.Utils
 
-  @expected_fields ~w(id name name_de slug subcategories)
+  @fields ~w(id name name_de slug subcategories)a
 
-  defstruct ~w(id name name_de slug subcategories)a
+  defstruct @fields
 
   @type t :: %__MODULE__{
           id: integer,
@@ -16,13 +16,13 @@ defmodule Fyyd.Categories.Category do
         }
 
   @doc """
-  Takes the `@expected_fields` out of a given map and builds a `%Category{}` struct out of it.
+  Takes the `@fields` out of a given map and builds a `%Category{}` struct out of it.
   """
   @spec extract_from_response(map) :: {:ok, t}
   def extract_from_response(data) do
     category =
       data
-      |> Utils.extract_from_response(@expected_fields)
+      |> Utils.extract_from_response(@fields)
       |> Utils.struct_from_keyword_list(__MODULE__)
 
     case category.subcategories do

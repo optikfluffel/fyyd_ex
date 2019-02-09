@@ -15,7 +15,8 @@ defmodule Fyyd.CurationsTest do
         |> Enum.take(:rand.uniform(100))
         |> Curations.extract_from_response()
 
-      assert %Curation{} = List.first(curations)
+      assert %Curation{} = curation = Enum.random(curations)
+      assert curation.id != nil
     end
 
     test "works with an empty list" do
