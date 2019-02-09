@@ -8,7 +8,7 @@ defmodule Fyyd.Factory do
 
   @tlds ~w(.com .org .de .io .us .net)
 
-  @image_base "https://img.fyyd.de"
+  @image_base "https://img-1.fyyd.de"
   @user_image @image_base <> "/user"
   @curation_image @image_base <> "/curation"
   @collection_image @image_base <> "/collection"
@@ -36,7 +36,8 @@ defmodule Fyyd.Factory do
         "fullname" => "Fullname " <> nick,
         "bio" => bio,
         "url" => "https://" <> url <> tld,
-        "layoutImageURL" => @user_image <> "/layout/" <> Integer.to_string(id) <> ".png?et=" <> et,
+        "layoutImageURL" =>
+          @user_image <> "/layout/" <> Integer.to_string(id) <> ".png?et=" <> et,
         "thumbImageURL" => @user_image <> "/micro/" <> Integer.to_string(id) <> ".png?et=" <> et,
         "microImageURL" => @user_image <> "/thumbs/" <> Integer.to_string(id) <> ".png?et=" <> et
       }
@@ -263,12 +264,10 @@ defmodule Fyyd.Factory do
       bio: "Just looking around.",
       fullname: "optikfluffel",
       id: 2078,
-      layoutImageURL:
-        "https://img.fyyd.de/user/layout/2078.jpg?et=644a12a72e1f75f671ede648850a0b98",
-      microImageURL: "https://img.fyyd.de/user/micro/2078.png?et=644a12a72e1f75f671ede648850a0b98",
+      layoutImageURL: @user_image <> "/layout/2078.jpg?et=644a12a72e1f75f671ede648850a0b98",
+      microImageURL: @user_image <> "/micro/2078.png?et=644a12a72e1f75f671ede648850a0b98",
       nick: "optikfluffel",
-      thumbImageURL:
-        "https://img.fyyd.de/user/thumbs/2078.png?et=644a12a72e1f75f671ede648850a0b98",
+      thumbImageURL: @user_image <> "/thumbs/2078.png?et=644a12a72e1f75f671ede648850a0b98",
       url: "https://www.instagram.com/optikfluffel/"
     }
   end
@@ -277,14 +276,11 @@ defmodule Fyyd.Factory do
     %Curation{
       description: "public test feed for optikfluffel",
       id: 2087,
-      layoutImageURL:
-        "https://img.fyyd.de/curation/layout/2087.jpg?et=9408c6befe81e94f3b6899c0b9b12041",
-      microImageURL:
-        "https://img.fyyd.de/curation/micro/2087.png?et=9408c6befe81e94f3b6899c0b9b12041",
+      layoutImageURL: @curation_image <> "/layout/2087.jpg?et=9408c6befe81e94f3b6899c0b9b12041",
+      microImageURL: @curation_image <> "/micro/2087.png?et=9408c6befe81e94f3b6899c0b9b12041",
       public: 1,
       slug: "6d9d617d6febc168b11fc630f5435d1b",
-      thumbImageURL:
-        "https://img.fyyd.de/curation/thumbs/2087.png?et=9408c6befe81e94f3b6899c0b9b12041",
+      thumbImageURL: @curation_image <> "/thumbs/2087.png?et=9408c6befe81e94f3b6899c0b9b12041",
       title: "test curation for optikfluffel",
       type: 1,
       url: "https://fyyd.de/user/optikfluffel/curation/6d9d617d6febc168b11fc630f5435d1b",
@@ -296,17 +292,13 @@ defmodule Fyyd.Factory do
     %Fyyd.Collections.Collection{
       description: "mainly for testing https://github.com/optikfluffel/fyyd_ex",
       id: 784,
-      layoutImageURL:
-        "https://img.fyyd.de/collection/layout/784.jpg?et=a252ee89acfbfb45ee9cb784a5b751eb",
-      microImageURL:
-        "https://img.fyyd.de/collection/micro/784.png?et=a252ee89acfbfb45ee9cb784a5b751eb",
+      layoutImageURL: @collection_image <> "/layout/784.jpg?et=a252ee89acfbfb45ee9cb784a5b751eb",
+      microImageURL: @collection_image <> "/micro/784.png?et=a252ee89acfbfb45ee9cb784a5b751eb",
       slug: "ee749d2f70420454714c01ee524a232e",
-      smallImageURL:
-        "https://img.fyyd.de/collection/small/784.jpg?et=a252ee89acfbfb45ee9cb784a5b751eb",
-      thumbImageURL:
-        "https://img.fyyd.de/collection/thumbs/784.png?et=a252ee89acfbfb45ee9cb784a5b751eb",
+      smallImageURL: @collection_image <> "/small/784.jpg?et=a252ee89acfbfb45ee9cb784a5b751eb",
+      thumbImageURL: @collection_image <> "/thumbs/784.png?et=a252ee89acfbfb45ee9cb784a5b751eb",
       title: "public test collection",
-      url: "https://fyyd.de/user/optikfluffel/collection/ee749d2f70420454714c01ee524a232e",
+      url: "https://api.fyyd.de/user/optikfluffel/collection/ee749d2f70420454714c01ee524a232e",
       user_id: 2078
     }
   end
