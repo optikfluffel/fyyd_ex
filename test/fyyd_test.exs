@@ -13,26 +13,21 @@ defmodule FyydTest do
   alias Fyyd.Podcasts.Podcast
 
   @super_secret_access_token "TO RE-RECORD THE ExVCR CASETTE SET A VALID TOKEN HERE"
-
-  setup_all do
-    HTTPoison.start()
-  end
+  @known_user Factory.optikfluffel()
+  @known_curation Factory.public_test_curation()
+  @known_collection Factory.public_test_collection()
 
   describe "user/1" do
     test "gets a User by it's id" do
       use_cassette "user_id" do
-        known_user = Factory.optikfluffel()
-
-        assert {:ok, ^known_user} = Fyyd.user(known_user.id)
+        assert {:ok, @known_user} = Fyyd.user(@known_user.id)
       end
     end
 
     test "gets a User by it's id, where id is a string" do
       use_cassette "user_id" do
-        known_user = Factory.optikfluffel()
-
-        assert {:ok, ^known_user} =
-                 known_user.id
+        assert {:ok, @known_user} =
+                 @known_user.id
                  |> Integer.to_string()
                  |> Fyyd.user()
       end
@@ -42,9 +37,7 @@ defmodule FyydTest do
   describe "user_by_nick/1" do
     test "gets a User by it's nick" do
       use_cassette "user_nick" do
-        known_user = Factory.optikfluffel()
-
-        assert {:ok, ^known_user} = Fyyd.user_by_nick(known_user.nick)
+        assert {:ok, @known_user} = Fyyd.user_by_nick(@known_user.nick)
       end
     end
   end
@@ -52,28 +45,28 @@ defmodule FyydTest do
   describe "curations_for_user/2" do
     test "gets Curations for a given User by it's id" do
       use_cassette "curations_user_id" do
-        {:ok, curations} = Fyyd.curations_for_user(Factory.optikfluffel().id)
+        {:ok, curations} = Fyyd.curations_for_user(@known_user.id)
 
         assert %Curation{} = List.first(curations)
-        assert Enum.member?(curations, Factory.public_test_curation())
+        assert Enum.member?(curations, @known_curation)
       end
     end
 
     test "gets Curations for a given User by it's id, where id is a string" do
       use_cassette "curations_user_id" do
         {:ok, curations} =
-          Factory.optikfluffel().id
+          @known_user.id
           |> Integer.to_string()
           |> Fyyd.curations_for_user()
 
         assert %Curation{} = List.first(curations)
-        assert Enum.member?(curations, Factory.public_test_curation())
+        assert Enum.member?(curations, @known_curation)
       end
     end
 
     test "gets Curations for a given User  by it's id, including Episodes" do
       use_cassette "curations_user_id_include_episodes" do
-        {:ok, curations} = Fyyd.curations_for_user(Factory.optikfluffel().id, include: :episodes)
+        {:ok, curations} = Fyyd.curations_for_user(@known_user.id, include: :episodes)
 
         assert %Curation{} = curation = List.first(curations)
         assert %Episode{} = List.first(curation.episodes)
@@ -84,17 +77,17 @@ defmodule FyydTest do
   describe "curations_for_user_by_nick/2" do
     test "gets Curations for a given User by it's nick" do
       use_cassette "curations_user_nick" do
-        assert {:ok, curations} = Fyyd.curations_for_user_by_nick(Factory.optikfluffel().nick)
+        assert {:ok, curations} = Fyyd.curations_for_user_by_nick(@known_user.nick)
 
         assert %Curation{} = List.first(curations)
-        assert Enum.member?(curations, Factory.public_test_curation())
+        assert Enum.member?(curations, @known_curation)
       end
     end
 
     test "gets Curations for a given User by it's nick, including Episodes" do
       use_cassette "curations_user_nick_include_episodes" do
         assert {:ok, curations} =
-                 Fyyd.curations_for_user_by_nick(Factory.optikfluffel().nick, include: :episodes)
+                 Fyyd.curations_for_user_by_nick(@known_user.nick, include: :episodes)
 
         assert %Curation{} = curation = List.first(curations)
         assert %Episode{} = List.first(curation.episodes)
@@ -105,29 +98,28 @@ defmodule FyydTest do
   describe "collections_for_user/2" do
     test "gets Collections for a given User by it's id" do
       use_cassette "collections_user_id" do
-        {:ok, collections} = Fyyd.collections_for_user(Factory.optikfluffel().id)
+        {:ok, collections} = Fyyd.collections_for_user(@known_user.id)
 
         assert %Collection{} = List.first(collections)
-        assert Enum.member?(collections, Factory.public_test_collection())
+        assert Enum.member?(collections, @known_collection)
       end
     end
 
     test "gets Collections for a given User by it's id, where id is a string" do
       use_cassette "collections_user_id" do
         {:ok, collections} =
-          Factory.optikfluffel().id
+          @known_user.id
           |> Integer.to_string()
           |> Fyyd.collections_for_user()
 
         assert %Collection{} = List.first(collections)
-        assert Enum.member?(collections, Factory.public_test_collection())
+        assert Enum.member?(collections, @known_collection)
       end
     end
 
     test "gets Collections for a given User  by it's id, including Podcasts" do
       use_cassette "collections_user_id_include_podcasts" do
-        {:ok, collections} =
-          Fyyd.collections_for_user(Factory.optikfluffel().id, include: :podcasts)
+        {:ok, collections} = Fyyd.collections_for_user(@known_user.id, include: :podcasts)
 
         assert %Collection{} = collection = List.first(collections)
         assert %Podcast{} = List.first(collection.podcasts)
@@ -138,10 +130,10 @@ defmodule FyydTest do
   describe "collections_for_user_by_nick/2" do
     test "gets Collections for a given User by it's nick" do
       use_cassette "collections_user_nick" do
-        assert {:ok, collections} = Fyyd.collections_for_user_by_nick(Factory.optikfluffel().nick)
+        assert {:ok, collections} = Fyyd.collections_for_user_by_nick(@known_user.nick)
 
         assert %Collection{} = List.first(collections)
-        assert Enum.member?(collections, Factory.public_test_collection())
+        assert Enum.member?(collections, @known_collection)
       end
     end
 
@@ -149,7 +141,7 @@ defmodule FyydTest do
       use_cassette "collections_user_nick_include_podcasts" do
         assert {:ok, collections} =
                  Fyyd.collections_for_user_by_nick(
-                   Factory.optikfluffel().nick,
+                   @known_user.nick,
                    include: :podcasts
                  )
 

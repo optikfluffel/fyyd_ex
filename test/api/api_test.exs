@@ -11,10 +11,6 @@ defmodule Fyyd.APITest do
 
   doctest API
 
-  setup_all do
-    HTTPoison.start()
-  end
-
   property "process_request_url/1 results always start with base_url followed by version" do
     check all string <- StreamData.string(:alphanumeric) do
       assert string
