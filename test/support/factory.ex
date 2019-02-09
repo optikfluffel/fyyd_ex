@@ -18,13 +18,11 @@ defmodule Fyyd.Factory do
   @episode_base "https://fyyd.de/episode"
 
   def non_empty_string do
-    :alphanumeric
-    |> StreamData.string()
-    |> StreamData.filter(&(&1 != ""))
+    StreamData.string(:alphanumeric, min_length: 1)
   end
 
   def user_map do
-    ExUnitProperties.gen all id <- StreamData.integer(),
+    ExUnitProperties.gen all id <- StreamData.positive_integer(),
                              nick <- non_empty_string(),
                              bio <- non_empty_string(),
                              url <- non_empty_string(),
@@ -45,11 +43,11 @@ defmodule Fyyd.Factory do
   end
 
   def curation_map do
-    ExUnitProperties.gen all id <- StreamData.integer(),
+    ExUnitProperties.gen all id <- StreamData.positive_integer(),
                              title <- non_empty_string(),
                              description <- non_empty_string(),
                              public <- StreamData.integer(0..1),
-                             type <- StreamData.integer(),
+                             type <- StreamData.positive_integer(),
                              slug <- non_empty_string(),
                              nick <- non_empty_string(),
                              et <- non_empty_string() do
@@ -73,11 +71,11 @@ defmodule Fyyd.Factory do
   end
 
   def curation_map_with_episodes do
-    ExUnitProperties.gen all id <- StreamData.integer(),
+    ExUnitProperties.gen all id <- StreamData.positive_integer(),
                              title <- non_empty_string(),
                              description <- non_empty_string(),
                              public <- StreamData.integer(0..1),
-                             type <- StreamData.integer(),
+                             type <- StreamData.positive_integer(),
                              slug <- non_empty_string(),
                              episodes <- StreamData.uniq_list_of(episode_map(), max_length: 5),
                              nick <- non_empty_string(),
@@ -103,8 +101,8 @@ defmodule Fyyd.Factory do
   end
 
   def collection_map do
-    ExUnitProperties.gen all id <- StreamData.integer(),
-                             user_id <- StreamData.integer(),
+    ExUnitProperties.gen all id <- StreamData.positive_integer(),
+                             user_id <- StreamData.positive_integer(),
                              title <- non_empty_string(),
                              description <- non_empty_string(),
                              slug <- non_empty_string(),
@@ -130,13 +128,13 @@ defmodule Fyyd.Factory do
   end
 
   def episode_map do
-    ExUnitProperties.gen all id <- StreamData.integer(),
+    ExUnitProperties.gen all id <- StreamData.positive_integer(),
                              guid <- non_empty_string(),
                              title <- non_empty_string(),
                              url <- non_empty_string(),
                              enclosure <- non_empty_string(),
-                             podcast_id <- StreamData.integer(),
-                             duration <- StreamData.integer(),
+                             podcast_id <- StreamData.positive_integer(),
+                             duration <- StreamData.positive_integer(),
                              description <- non_empty_string(),
                              tld <- StreamData.member_of(@tlds) do
       %{
@@ -156,9 +154,9 @@ defmodule Fyyd.Factory do
   end
 
   def podcast_map do
-    ExUnitProperties.gen all id <- StreamData.integer(),
+    ExUnitProperties.gen all id <- StreamData.positive_integer(),
                              description <- non_empty_string(),
-                             episode_count <- StreamData.integer(),
+                             episode_count <- StreamData.positive_integer(),
                              etag <- non_empty_string(),
                              generator <- non_empty_string(),
                              htmlURL <- non_empty_string(),
@@ -170,10 +168,10 @@ defmodule Fyyd.Factory do
                              layoutImageURL <- non_empty_string(),
                              md5body <- non_empty_string(),
                              microImageURL <- non_empty_string(),
-                             rank <- StreamData.integer(),
+                             rank <- StreamData.positive_integer(),
                              slug <- non_empty_string(),
                              smallImageURL <- non_empty_string(),
-                             status <- StreamData.integer(),
+                             status <- StreamData.positive_integer(),
                              subtitle <- non_empty_string(),
                              thumbImageURL <- non_empty_string(),
                              title <- non_empty_string(),
@@ -208,7 +206,7 @@ defmodule Fyyd.Factory do
   end
 
   def account_map do
-    ExUnitProperties.gen all id <- StreamData.integer(),
+    ExUnitProperties.gen all id <- StreamData.positive_integer(),
                              fullname <- non_empty_string(),
                              bio <- non_empty_string(),
                              nick <- non_empty_string(),
@@ -245,7 +243,7 @@ defmodule Fyyd.Factory do
   end
 
   def base_category_map do
-    ExUnitProperties.gen all id <- StreamData.integer(),
+    ExUnitProperties.gen all id <- StreamData.positive_integer(),
                              name <- non_empty_string(),
                              name_de <- non_empty_string(),
                              slug <- non_empty_string() do
