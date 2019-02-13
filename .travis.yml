@@ -19,3 +19,7 @@ script:
   - mix format --check-formatted
   - mix coveralls.travis --trace
   # - dialyzer --no_check_plt --plt $PLT_LOCATION --no_native _build/test/lib/fyyd_ex/ebin
+cache:
+  directories:
+    - deps
+    - _build
